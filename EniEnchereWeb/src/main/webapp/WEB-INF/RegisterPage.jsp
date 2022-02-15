@@ -10,37 +10,59 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<div class="container-sm-flex ">
+	<div class="container-sm-flex pt-5 mx-auto col-8  ">
 		<form>
 				<div class="form-row row align-items-center">
-					<div class="col form-group">
-						<label>Prenom </label> <input type="text" class="form-control"
+					<div class="">
+						<label>Pseudo </label> <input type="text" class="form-control"
 							placeholder="">
 					</div>
-					<div class="col form-group">
+					<div class="">
 						<label>Nom</label> <input type="text" class="form-control"
 							placeholder=" ">
 					</div>
+					<div class="">
+						<label>Prenom </label> <input type="text" class="form-control"
+							placeholder="">
+					</div>
 				</div>
-				<div class="form-group">
+				<div class="">
 					<label>Email </label> 
 					<input type="email" class="form-control" placeholder=""> 
 				</div>	
-
-					<div class="form-row">
-						<div class="form-group col-md-12">
+					<div class="">
+						<div class="">
+						<label>Rue</label> 
+						<input type="text" class="form-control">
+						</div>	
+					</div>
+					<div class="">
+						<div class="">
+						<label>Code Postal</label> 
+						<input type="text" class="form-control">
+						</div>	
+					</div>
+					<div class="">
+						<div class="">
 						<label>Ville</label> 
 						<input type="text" class="form-control">
 						</div>	
 					</div>
 					
-					<div class="form-group col-md-12">
+					<div class=" ">
 						<label>Créer votre mot de passe</label> <input
 							class="form-control" type="password">
 					</div>
+					
+					<div class="">
+						<label>Confirmez votre mot de passe</label> <input
+							class="form-control" type="password">
+					</div>
 
-					<div class="form-group">
-						<button type="submit" class="btn btn-primary btn-block">S'enregistrer</button>
+					<div class="form-row">
+						<button type="submit" class="btn btn-primary btn-block">Créer</button>
+						<button type="submit" class="btn btn-primary btn-block">Annuler</button>
+					
 					</div>
 			
 			
