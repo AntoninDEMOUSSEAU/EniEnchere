@@ -23,5 +23,5 @@
 hs_err_pid*
 /.metadata/
 Servers
-EniEnchereCommun/.classpath
-EniEnchereWeb/.classpath
+*/.classpath
+*/.settings
