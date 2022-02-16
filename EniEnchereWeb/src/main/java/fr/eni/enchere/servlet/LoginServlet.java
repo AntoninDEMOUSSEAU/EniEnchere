@@ -39,13 +39,19 @@ public class LoginServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		String login;
 		String password;
+		Boolean connexion = false;
+		
 		
 		login=request.getParameter("login");
 		password=request.getParameter("password");
 		
 		if (login.equals("admin")&& password.equals("123"))
 		{
-			response.sendRedirect("/");
+			connexion = true;
+			response.sendRedirect(request.getContextPath() + "/");
+		} else {
+			connexion = false;
+			response.sendRedirect(request.getContextPath() + "/LoginPage");
 		}
 }
 }
