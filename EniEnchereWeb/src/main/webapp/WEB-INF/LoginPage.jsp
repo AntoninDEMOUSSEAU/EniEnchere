@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,6 +24,7 @@
 	    <div class="fadeIn first">
 	      <img src="..\Picture\User_icon_2.png" id="icon" alt="User Icon" />
 	    </div>
+	
 	
 	    <!-- Login Form -->
 	    <form method="post" action="<%= request.getContextPath() %>/LoginServlet">
