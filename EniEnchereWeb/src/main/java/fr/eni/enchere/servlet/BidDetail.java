@@ -2,24 +2,26 @@ package fr.eni.enchere.servlet;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
 /**
- * Servlet implementation class LoginServlet
+ * Servlet implementation class BidDetail
  */
-@WebServlet("/LoginServlet")
-public class LoginServlet extends HttpServlet {
+@WebServlet("/BidDetail")
+public class BidDetail extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public LoginServlet() {
+    public BidDetail() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -28,29 +30,20 @@ public class LoginServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		getServletContext().getRequestDispatcher("/LoginPage.jsp").forward(request, response);
+		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/BidDetail.jsp");
+		rd.forward(request, response);
 	}
+		
+		
+		
+		
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String login;
-		String password;
-		Boolean connexion = false;
-		
-		login=request.getParameter("login");
-		password=request.getParameter("password");
-		
-		if (login.equals("admin")&& password.equals("123"))
-		{
-			connexion = true;
-			response.sendRedirect(request.getContextPath() + "/");
-		} else {
-			connexion = false;
-			response.sendRedirect(request.getContextPath() + "/LoginPage");
-		}
-}
+		doGet(request, response);
+	}
+
 }
