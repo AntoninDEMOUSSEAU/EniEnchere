@@ -8,12 +8,11 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Register Page</title>
+<title>Account Page</title>
 </head>
 <body>
-<h1> Créer un compte</h1>
-	<div class="container-sm-flex pt-5 mx-auto col-8  ">
-		<form>
+<h1> Mon Profil </h1>
+	<form>
 				<div class="form-row row align-items-center">
 					<div class="">
 						<label>Pseudo </label> 
@@ -50,28 +49,29 @@
 					</div>
 					
 					<div class=" ">
-						<label>Créer votre mot de passe</label> <input
-							class="form-control" type="password">
+						<label>Créer votre mot de passe</label> 
+						<input class="form-control" type="password">
 					</div>
 					
 					<div class="mb-3">
-						<label>Confirmez votre mot de passe</label> <input
-							class="form-control" type="password">
+						<label>Confirmez votre mot de passe</label> 
+						<input class="form-control" type="password">
+					</div>
+					
+					<div class="mb-3">
+						<label>Crédit</label> 
+						<input class="form-control" type="password" disabled>
 					</div>
 
 					<div class="form-row">
-						<button type="submit" class="btn btn-primary btn-block">Créer</button>
-						<button type="submit" class="btn btn-primary btn-block">Annuler</button>
+						<button type="submit" class="btn btn-primary btn-block">Enregistrer</button>
+						<button type="submit" class="btn btn-primary btn-block">Supprimer mon Compte</button>
+						<button type="submit" class="btn btn-primary btn-block">Retour</button>
 					
 					</div>
 			
-			
-			<div class="border-top card-body text-center">
-				Vous avez déjà un compte ? <a
-					href="<%=request.getContextPath()%>/LoginServlet ">Connectez-vous</a>
-			</div>
+	
 	
 	</form>
-	</div>
 </body>
 </html>
