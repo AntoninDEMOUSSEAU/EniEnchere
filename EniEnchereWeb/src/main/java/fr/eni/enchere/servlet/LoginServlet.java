@@ -37,21 +37,7 @@ public class LoginServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String login;
-		String password;
-		Boolean connexion = false;
+
 		
-		
-		login=request.getParameter("login");
-		password=request.getParameter("password");
-		
-		if (login.equals("admin")&& password.equals("123"))
-		{
-			connexion = true;
-			response.sendRedirect(request.getContextPath() + "/");
-		} else {
-			connexion = false;
-			response.sendRedirect(request.getContextPath() + "/LoginPage");
-		}
 }
 }
