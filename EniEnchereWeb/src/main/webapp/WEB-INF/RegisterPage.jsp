@@ -30,6 +30,11 @@
 					<label>Email </label> 
 					<input type="email" class="form-control" placeholder=""> 
 				</div>	
+				
+				<div class="">
+					<label>Téléphone </label> 
+					<input type="number" class="form-control" placeholder=""> 
+				</div>	
 					<div class="">
 						<div class="">
 						<label>Rue</label> 
