@@ -16,7 +16,7 @@ public class UtilisateurManager {
 		this.utilisateurDAO=DAOFactory.getUtilisateurDAO();
 	}
 	
-	public void Register(String pseudo, String nom, String prenom, String email,int telephone,String nomRue,int codePostale,String ville,String motDePasse) throws DALException {
+	public void Register(String pseudo, String nom, String prenom, String email,int telephone,String nomRue,int codePostale,String ville,String motDePasse) {
 		Utilisateur utilisateur = new Utilisateur();
 		utilisateur.setPseudo(pseudo);
 		utilisateur.setNom(nom);
