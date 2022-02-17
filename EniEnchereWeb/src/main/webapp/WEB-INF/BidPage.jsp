@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,14 +8,14 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
 <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Liste des enchères</title>
+<title>Liste des enchÃ¨res</title>
 </head>
 <body>
-	<h1>ENI-Enchères</h1>
+	<h1>ENI-EnchÃ¨res</h1>
 		<div>
 			<a class="underlineHover" href="<%=request.getContextPath()%>/VendreArticleServlet ">Vendre un article</a>
 			<a class="underlineHover" href="<%=request.getContextPath()%>/MonProfilServlet ">Mon Profil</a>
-			<a class="underlineHover" href="<%=request.getContextPath()%>/DeconnexionServlet ">Déconnexion</a>
+			<a class="underlineHover" href="<%=request.getContextPath()%>/LogoutServlet ">DÃ©connexion</a>
 		</div>
 	<h2>Filtres : </h2>		
 		<div class="form-check">
@@ -24,19 +24,19 @@
 			<div class="form-check">
 			  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
 			  <label class="form-check-label" for="defaultCheck1">
-			    Enchère ouvertes
+			    EnchÃ¨re ouvertes
 			  </label>
 			</div>
 			<div class="form-check">
 			  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
 			  <label class="form-check-label" for="defaultCheck1">
-			    Mes enchères en cours
+			    Mes enchÃ¨res en cours
 			  </label>
 			</div>
 			<div class="form-check">
 			  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
 			  <label class="form-check-label" for="defaultCheck1">
-			    Mes enchères remportées
+			    Mes enchÃ¨res remportÃ©es
 			  </label>
 			</div>
 		</div>
@@ -52,25 +52,25 @@
 			<div class="form-check">
 			  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
 			  <label class="form-check-label" for="defaultCheck1">
-			    Ventes non débutées
+			    Ventes non dÃ©butÃ©es
 			  </label>
 			</div>
 			<div class="form-check">
 			  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
 			  <label class="form-check-label" for="defaultCheck1">
-			    Ventes terminées
+			    Ventes terminÃ©es
 			  </label>
 			</div>
 		</div>	
 		<div class="mb-3 row">
-			<label for="categories" class="col-sm-2 col-form-label">Catégories</label>
+			<label for="categories" class="col-sm-2 col-form-label">CatÃ©gories</label>
 				<div class="col-sm-10">
 					<select class="form-select" aria-label="Default select example">
 					<option selected>Toutes</option>
 					<option value="1">One</option>
 					<option value="2">Two</option>
 					<option value="3">Three</option>
-					<option value="4">Viva l'Algérie</option>
+					<option value="4">Viva l'AlgÃ©rie</option>
 					</select>
 				</div>
 		</div>		
@@ -89,8 +89,8 @@
                         <div class="card-body">
                           <h5 class="card-title">PC gamer pour travailler</h5>
                           <p class="card-text">Prix : 210 points Classement : 2</p>
-                          <p class="card-text">Fin de l'enchère : 10/08/2018</p>
-                          <p class="card-text">Retrait : 10 allée des Alouettes 44800 Saint Herblain</p>
+                          <p class="card-text">Fin de l'enchÃ¨re : 10/08/2018</p>
+                          <p class="card-text">Retrait : 10 allÃ©e des Alouettes 44800 Saint Herblain</p>
                           <p class="card-text">Vendeur : jojo44</p>
                         </div>
                       </div>

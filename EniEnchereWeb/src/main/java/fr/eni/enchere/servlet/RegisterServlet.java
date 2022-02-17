@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import fr.eni.echere.bll.UtilisateurManager;
+import fr.eni.enchere.bll.UtilisateurManager;
 
 
 /**
