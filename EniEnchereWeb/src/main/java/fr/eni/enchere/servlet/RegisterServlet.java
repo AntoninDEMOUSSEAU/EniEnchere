@@ -7,6 +7,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import fr.eni.echere.bll.UtilisateurManager;
+
+
 /**
  * Servlet implementation class RegisterServlet
  */
@@ -34,8 +37,21 @@ public class RegisterServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		UtilisateurManager utilisateurManager = new UtilisateurManager();
+		
+		String pseudo = request.getParameter("pseudo");
+		String nom = request.getParameter("nom");
+		String prenom = request.getParameter("prenom");
+		String email = request.getParameter("email");
+		int telephone =  Integer.parseInt(request.getParameter("telephone"));
+		String nomRue = request.getParameter("rue");
+		int codePostal= Integer.parseInt(request.getParameter("codePostal"));
+		String ville= request.getParameter("ville");
+		String password=request.getParameter("password");
+		
+		utilisateurManager.Register(pseudo, nom, prenom, email, telephone, nomRue, codePostal, ville, password);
+		
+		response.sendRedirect(request.getContextPath() + "/LoginPage");
 	}
 
 }

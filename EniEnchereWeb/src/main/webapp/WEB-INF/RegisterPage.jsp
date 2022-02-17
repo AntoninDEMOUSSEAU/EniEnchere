@@ -13,50 +13,50 @@
 <body>
 <h1> Créer un compte</h1>
 	<div class="container-sm-flex pt-5 mx-auto col-8  ">
-		<form>
+		<form method="post" action="${pageContext.request.contextPath}/RegisterServlet" >
 				<div class="form-row row align-items-center">
 					<div class="">
 						<label>Pseudo </label> 
-						<input type="text" class="form-control" placeholder="">
+						<input type="text" class="form-control" name="pseudo" placeholder="">
 					</div>
 					<div class="">
 						<label>Nom</label> <input type="text" class="form-control" placeholder=" ">
 					</div>
 					<div class="">
-						<label>Prenom </label> <input type="text" class="form-control" placeholder="">
+						<label>Prenom </label> <input type="text" class="form-control" name="nom" placeholder="">
 					</div>
 				</div>
 				<div class="">
 					<label>Email </label> 
-					<input type="email" class="form-control" placeholder=""> 
+					<input type="email" class="form-control" name="email" placeholder=""> 
 				</div>	
 				
 				<div class="">
 					<label>Téléphone </label> 
-					<input type="number" class="form-control" placeholder=""> 
+					<input type="number" class="form-control" name="telephone" placeholder=""> 
 				</div>	
 					<div class="">
 						<div class="">
 						<label>Rue</label> 
-						<input type="text" class="form-control">
+						<input type="text" class="form-control" name="rue">
 						</div>	
 					</div>
 					<div class="">
 						<div class="">
 						<label>Code Postal</label> 
-						<input type="text" class="form-control">
+						<input type="text" class="form-control" name="codePostal">
 						</div>	
 					</div>
 					<div class="">
 						<div class="">
 						<label>Ville</label> 
-						<input type="text" class="form-control">
+						<input type="text" name="ville" class="form-control" name="ville" >
 						</div>	
 					</div>
 					
 					<div class=" ">
 						<label>Créer votre mot de passe</label> <input
-							class="form-control" type="password">
+							class="form-control" type="password" name="password">
 					</div>
 					
 					<div class="mb-3">
