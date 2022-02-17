@@ -19,6 +19,20 @@ public class Utilisateur {
 		
 	}
 		
+	public Utilisateur(String pseudo, String nom, String prenom, String email, int telephone, String nomRue,
+			int codePostale, String ville, String motDePasse) {
+		super();
+		this.pseudo = pseudo;
+		this.nom = nom;
+		this.prenom = prenom;
+		this.email = email;
+		this.telephone = telephone;
+		this.nomRue = nomRue;
+		this.codePostale = codePostale;
+		this.ville = ville;
+		this.motDePasse = motDePasse;
+	}
+
 	public int getNoUtilisateur() {
 		return noUtilisateur;
 	}
