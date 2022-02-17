@@ -6,6 +6,8 @@ import fr.eni.enchere.bo.Utilisateur;
 
 public interface UtilisateurDAO {
 	public void insertUtilisateur(Utilisateur utilisateur) throws DALException,SQLException;
-	public  Utilisateur selectUtilisateurByEmail(String email) throws DALException;
+	public  Utilisateur LoginByEmail(String email, String password) throws DALException, SQLException;
+	public  Utilisateur selectUtilisateurById(int id) throws DALException, SQLException;
+
 
 }
