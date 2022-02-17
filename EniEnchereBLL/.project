@@ -3,6 +3,9 @@
 	<name>EniEnchereBLL</name>
 	<comment></comment>
 	<projects>
+		<project>EniEnchereDAL</project>
+		<project>EniEnchereCommun</project>
+		<project>EniEnchereWeb</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

@@ -16,7 +16,7 @@ public class UtilisateurDAOImpl implements UtilisateurDAO{
 	@Override
 	public void insertUtilisateur(Utilisateur utilisateur) throws DALException, SQLException{
 	
-		Connection cnx = ConnectionProvider.getConnection();
+		Connection cnx = JdbcTools.getConnection();
 		try {	
 		PreparedStatement pstmt;
 		ResultSet rs;
@@ -52,7 +52,7 @@ public class UtilisateurDAOImpl implements UtilisateurDAO{
 	public  Utilisateur selectUtilisateurByEmail(String email) throws DALException{
 		Utilisateur utilisateur = new Utilisateur();
 		try {
-			Connection cnx = ConnectionProvider.getConnection();
+			Connection cnx = JdbcTools.getConnection();
 			PreparedStatement pstmt = cnx.prepareStatement(SELECT_UTILISATEUR_BY_EMAIL);
 			pstmt.setString(1, email);
 			ResultSet rs = pstmt.executeQuery();
