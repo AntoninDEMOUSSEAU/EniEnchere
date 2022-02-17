@@ -61,7 +61,7 @@
 					
 					<div class="mb-3">
 						<label>Confirmez votre mot de passe</label> <input
-							class="form-control" type="password">
+							class="form-control" type="password" name="confirm_password">
 					</div>
 
 					<div class="form-row">

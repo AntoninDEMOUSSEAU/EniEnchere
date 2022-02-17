@@ -11,6 +11,16 @@
         
         
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
+        <dependent-module archiveName="EniEnchereDAL.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/EniEnchereDAL/EniEnchereDAL">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="EniEnchereCommun.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/EniEnchereCommun/EniEnchereCommun">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="EniEnchereBLL.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/EniEnchereBLL/EniEnchereBLL">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+
                                 
         
         
