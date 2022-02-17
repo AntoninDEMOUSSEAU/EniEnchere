@@ -1,12 +1,11 @@
-package fr.eni.echere.bll;
+package fr.eni.enchere.bll;
 
 import java.sql.SQLException;
 
-import fr.eni.enchere.bo.Utilisateur;
 import fr.eni.enchere.dal.DALException;
 import fr.eni.enchere.dal.DAOFactory;
 import fr.eni.enchere.dal.UtilisateurDAO;
-
+import fr.eni.enchere.bo.Utilisateur;
 
 public class UtilisateurManager {
 
