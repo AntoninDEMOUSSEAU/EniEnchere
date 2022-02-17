@@ -12,7 +12,8 @@ public class UtilisateurDAOImpl implements UtilisateurDAO{
 	
 	private static final String INSERT_UTILISATEUR = "insert into Utilisateur(pseudo, nom, prenom,email,telephone,rue,code_postal,ville,mot_de_passe) values(?,?,?,?,?,?,?,?,?);";
 	private static final String SELECT_UTILISATEUR_BY_EMAIL="select pseudo, nom, prenom, email, telephone, rue, code_postal,ville from Utilisateur where email=?";
-	
+	private static final String SELECT_UTILISATEUR_BY_ID="select pseudo, nom, prenom, email, telephone, rue, code_postal,ville from Utilisateur where id=?";
+
 	@Override
 	public void insertUtilisateur(Utilisateur utilisateur) throws DALException, SQLException{
 	
@@ -43,16 +44,17 @@ public class UtilisateurDAOImpl implements UtilisateurDAO{
 		}
 		cnx.commit();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		cnx.close();
 	}
 	
 	@Override
-	public  Utilisateur selectUtilisateurByEmail(String email) throws DALException{
+	public  Utilisateur LoginByEmail(String email,String password) throws DALException, SQLException{
 		Utilisateur utilisateur = new Utilisateur();
+		Connection cnx = null;
 		try {
-			Connection cnx = JdbcTools.getConnection();
+			cnx = JdbcTools.getConnection();
 			PreparedStatement pstmt = cnx.prepareStatement(SELECT_UTILISATEUR_BY_EMAIL);
 			pstmt.setString(1, email);
 			ResultSet rs = pstmt.executeQuery();
@@ -71,15 +73,48 @@ public class UtilisateurDAOImpl implements UtilisateurDAO{
 					utilisateur.setVille(rs.getString("ville"));
 					utilisateur.setMotDePasse(rs.getString("mot_de_passe"));
 				
-			
+					
 			}
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		cnx.close();
 		return utilisateur;
 	
 		
+	}
+
+	@Override
+	public  Utilisateur selectUtilisateurById(int id) throws DALException, SQLException{
+		Utilisateur utilisateur = new Utilisateur();
+		Connection cnx=null;
+		try {
+			cnx = JdbcTools.getConnection();
+			PreparedStatement pstmt = cnx.prepareStatement(SELECT_UTILISATEUR_BY_ID);
+			pstmt.setInt(1, id);
+			ResultSet rs = pstmt.executeQuery();
+			while(rs.next())
+			{
+				
+					utilisateur.setPseudo(rs.getString("pseudo"));
+					utilisateur.setNom(rs.getString("nom"));
+					utilisateur.setPrenom(rs.getString("prenom"));
+					utilisateur.setEmail(rs.getString("email"));
+					utilisateur.setTelephone(rs.getInt("telephone"));
+					utilisateur.setNomRue(rs.getString("rue"));
+					utilisateur.setCodePostale(rs.getInt("code_postal"));
+					utilisateur.setVille(rs.getString("ville"));
+					utilisateur.setMotDePasse(rs.getString("mot_de_passe"));
+			}
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		cnx.close();
+		return utilisateur;
 	}
 }
