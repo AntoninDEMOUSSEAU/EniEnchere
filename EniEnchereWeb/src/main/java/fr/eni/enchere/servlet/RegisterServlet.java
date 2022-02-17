@@ -7,7 +7,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+
 import fr.eni.enchere.bll.UtilisateurManager;
+
+import fr.eni.echere.bll.UtilisateurManager;
+import fr.eni.enchere.bo.Utilisateur;
+
 
 
 /**
@@ -37,6 +42,7 @@ public class RegisterServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// Ajouter confirm password, administrateur dans le formulaire
 		UtilisateurManager utilisateurManager = new UtilisateurManager();
 		
 		String pseudo = request.getParameter("pseudo");
@@ -48,8 +54,21 @@ public class RegisterServlet extends HttpServlet {
 		int codePostal= Integer.parseInt(request.getParameter("codePostal"));
 		String ville= request.getParameter("ville");
 		String password=request.getParameter("password");
+		String confirmPassword=request.getParameter("confirm_password");
 		
-		utilisateurManager.Register(pseudo, nom, prenom, email, telephone, nomRue, codePostal, ville, password);
+		Utilisateur utilisateur = new Utilisateur();
+		
+		utilisateur.setPseudo(pseudo);
+		utilisateur.setNom(nom);
+		utilisateur.setPrenom(prenom);
+		utilisateur.setEmail(email);
+		utilisateur.setTelephone(telephone);
+		utilisateur.setNomRue(nomRue);
+		utilisateur.setCodePostale(codePostal);
+		utilisateur.setVille(ville);
+		utilisateur.setMotDePasse(password);
+	
+		utilisateurManager.Register(utilisateur);
 		
 		response.sendRedirect(request.getContextPath() + "/LoginPage");
 	}

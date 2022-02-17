@@ -12,30 +12,39 @@ public class UtilisateurManager {
 	private UtilisateurDAO utilisateurDAO;
 	
 	public UtilisateurManager() {
+		
 		this.utilisateurDAO=DAOFactory.getUtilisateurDAO();
 	}
 	
-	public void Register(String pseudo, String nom, String prenom, String email,int telephone,String nomRue,int codePostale,String ville,String motDePasse) {
-		Utilisateur utilisateur = new Utilisateur();
-		utilisateur.setPseudo(pseudo);
-		utilisateur.setNom(nom);
-		utilisateur.setPrenom(prenom);
-		utilisateur.setEmail(email);
-		utilisateur.setTelephone(telephone);
-		utilisateur.setNomRue(nomRue);
-		utilisateur.setCodePostale(codePostale);
-		utilisateur.setVille(ville);
-		utilisateur.setMotDePasse(motDePasse);
-		
-			try {
-				this.utilisateurDAO.insertUtilisateur(utilisateur);
-			} catch (DALException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-	
+	public void Register(Utilisateur utilisateur) {
+		try {
+			DAOFactory.getUtilisateurDAO().insertUtilisateur(utilisateur);
+		} catch (DALException | SQLException e) {
+			e.printStackTrace();
+		}
 	}
+	public Utilisateur AfficherCompteUtilisateurById(int id) throws DALException {
+		Utilisateur utilisateur=null;
+		try {
+			 utilisateur=this.utilisateurDAO.selectUtilisateurById(id);
+		} catch (DALException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return utilisateur;
+	}
+	
+	public Utilisateur LoginByEmail(String email, String password) throws DALException {
+		Utilisateur utilisateur=null;
+		try {
+			 utilisateur=this.utilisateurDAO.LoginByEmail(email,password);
+		} catch (DALException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return utilisateur;
+	}
+	
 }
