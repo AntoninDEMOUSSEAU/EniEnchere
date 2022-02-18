@@ -25,25 +25,35 @@ public class AccountServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		UtilisateurManager utilisateurManager = new UtilisateurManager();
+        Utilisateur utilisateur = null;
+        
+		HttpSession session = request.getSession();
+		
+        int id =12; //(int) session.getAttribute("idUtilisateur");
+	
+        try {
+        	
+			utilisateur=utilisateurManager.AfficherCompteUtilisateurById(id);
+			
+			request.setAttribute("utilisateur", utilisateur);
+			
+		} catch (DALException e) {
+			e.printStackTrace();
+		}
 		getServletContext().getRequestDispatcher("/WEB-INF/Account.jsp").forward(request, response);
+	
 	}
+	
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		UtilisateurManager utilisateurManager = new UtilisateurManager();
-        HttpSession session = request.getSession();
-        int id = (int) session.getAttribute("idUtilisateur");
-		try {
-			utilisateurManager.AfficherCompteUtilisateurById(id);
-		} catch (DALException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		response.sendRedirect(request.getContextPath() + "/LoginServlet");
-	}	
 	
+		doGet(request, response);
 
+	
+	}
 }

@@ -112,7 +112,7 @@ public class UtilisateurDAOImpl implements UtilisateurDAO{
 					utilisateur.setNom(rs.getString("nom"));
 					utilisateur.setPrenom(rs.getString("prenom"));
 					utilisateur.setEmail(rs.getString("email"));
-					utilisateur.setTelephone(rs.getInt("telephone"));
+					utilisateur.setTelephone(rs.getString("telephone"));
 					utilisateur.setNomRue(rs.getString("rue"));
 					utilisateur.setCodePostale(rs.getInt("code_postal"));
 					utilisateur.setVille(rs.getString("ville"));

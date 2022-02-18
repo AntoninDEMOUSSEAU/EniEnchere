@@ -1,5 +1,8 @@
+<%@page import="fr.eni.enchere.bo.*"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jstl/core" prefix="c" %>
+  
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,43 +13,42 @@
 </head>
 <body>
 
-
 <h1> Mon Pseudo </h1>
 	<form>
 			<div class="form-row row align-items-center">
 				<div class="">
 					<label>Pseudo </label> 
-					<input type="text" value="" class="form-control" placeholder="" disabled >
+					<input type="text" value="${utilisateur.getPseudo()}" class="form-control" placeholder="" disabled >
 				</div>
 				<div class="">
 					<label>Nom</label> 
-					<input type="text" value="" class="form-control" placeholder=" " disabled>
+					<input type="text" <c:out value="${utilisateur.getNom()}"></c:out> class="form-control" placeholder=" " disabled>
 				</div>
 				<div class="">
 					<label>Prenom </label> 
-					<input type="text"  value="" class="form-control" placeholder="" disabled>
+					<input type="text"  <c:out value="${utilisateur.getPseudo()}"></c:out> class="form-control" placeholder="" disabled>
 				</div>
 			</div>
 			<div class="">
 				<label>Email </label> 
-				<input type="email" value="" class="form-control" placeholder="" disabled> 
+				<input type="email" <c:out value="${utilisateur.getPrenom()}"></c:out> class="form-control" placeholder="" disabled> 
 			</div>	
 				<div class="">
 					<div class="">
 					<label>Rue</label> 
-					<input type="text" value="" class="form-control" disabled>
+					<input type="text" <c:out value="${utilisateur.getPseudo()}"></c:out> class="form-control" disabled>
 					</div>	
 				</div>
 				<div class="">
 					<div class="">
 					<label>Code Postal</label> 
-					<input type="text" value="" class="form-control" disabled>
+					<input type="text" <c:out value="${utilisateur.getPseudo()}"></c:out> class="form-control" disabled>
 					</div>	
 				</div>
 				<div class="">
 					<div class="">
 					<label>Ville</label> 
-					<input type="text" value="" class="form-control" disabled>
+					<input type="text" <c:out value="${utilisateur.getPseudo()}"></c:out> class="form-control" disabled>
 					</div>	
 				</div>
 				
