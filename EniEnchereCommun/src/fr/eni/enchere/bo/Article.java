@@ -14,7 +14,18 @@ public class Article {
 	private String etatVente;
 	
 	public Article() {
-		
+		super();
+	}
+	
+	public Article(int noArticle, String nomArticle, String description, Date datedebutEncheres, Date dateFinEncheres, int miseAPrix, int prixVente) {
+		super();
+		this.noArticle=noArticle;
+		this.nomArticle=nomArticle;
+		this.description=description;
+		this.datedebutEncheres=datedebutEncheres;
+		this.dateFinEncheres=dateFinEncheres;
+		this.miseAPrix=miseAPrix;
+		this.prixVente=prixVente;
 	}
 	
 	public int getNoArticle() {
