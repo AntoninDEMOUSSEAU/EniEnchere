@@ -2,7 +2,7 @@ package fr.eni.enchere.bo;
 
 import java.util.Date;
 
-public class ArticleVendu {
+public class Article {
 
 	private int noArticle;
 	private String nomArticle;
@@ -13,7 +13,7 @@ public class ArticleVendu {
 	private int prixVente;
 	private String etatVente;
 	
-	public ArticleVendu() {
+	public Article() {
 		
 	}
 	
