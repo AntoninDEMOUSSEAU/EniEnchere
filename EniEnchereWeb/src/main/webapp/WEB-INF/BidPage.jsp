@@ -13,8 +13,8 @@
 <body>
 	<h1>ENI-Enchères</h1>
 		<div>
-			<a class="underlineHover" href="<%=request.getContextPath()%>/VendreArticleServlet ">Vendre un article</a>
-			<a class="underlineHover" href="<%=request.getContextPath()%>/MonProfilServlet ">Mon Profil</a>
+			<a class="underlineHover" href="<%=request.getContextPath()%>/NewSale ">Vendre un article</a>
+			<a class="underlineHover" href="<%=request.getContextPath()%>/AccountServlet ">Mon Profil</a>
 			<a class="underlineHover" href="<%=request.getContextPath()%>/DeconnexionServlet">Déconnexion</a>
 		</div>
 	<h2>Filtres : </h2>		

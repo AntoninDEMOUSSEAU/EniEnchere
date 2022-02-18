@@ -31,7 +31,7 @@ public class AccountServlet extends HttpServlet {
         
 		HttpSession session = request.getSession();
 		
-        int id =12; //(int) session.getAttribute("idUtilisateur");
+        int id = (int) session.getAttribute("idUtilisateur");
 	
         try {
         	
