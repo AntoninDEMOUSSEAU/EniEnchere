@@ -49,7 +49,7 @@ public class RegisterServlet extends HttpServlet {
 		String nom = request.getParameter("nom");
 		String prenom = request.getParameter("prenom");
 		String email = request.getParameter("email");
-		int telephone =  Integer.parseInt(request.getParameter("telephone"));
+		String telephone = request.getParameter("telephone");
 		String nomRue = request.getParameter("rue");
 		int codePostal= Integer.parseInt(request.getParameter("codePostal"));
 		String ville= request.getParameter("ville");

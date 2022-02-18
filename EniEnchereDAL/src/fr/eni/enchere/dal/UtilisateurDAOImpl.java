@@ -28,7 +28,7 @@ public class UtilisateurDAOImpl implements UtilisateurDAO{
 			pstmt.setString(2, utilisateur.getNom());
 			pstmt.setString(3, utilisateur.getPrenom());
 			pstmt.setString(4, utilisateur.getEmail());
-			pstmt.setInt(5, utilisateur.getTelephone());
+			pstmt.setString(5, utilisateur.getTelephone());
 			pstmt.setString(6, utilisateur.getNomRue());
 			pstmt.setInt(7, utilisateur.getCodePostale());
 			pstmt.setString(8, utilisateur.getVille());
@@ -74,7 +74,7 @@ public class UtilisateurDAOImpl implements UtilisateurDAO{
 					utilisateur.setNom(rs.getString("nom"));
 					utilisateur.setPrenom(rs.getString("prenom"));
 					utilisateur.setEmail(rs.getString("email"));
-					utilisateur.setTelephone(rs.getInt("telephone"));
+					utilisateur.setTelephone(rs.getString("telephone"));
 					utilisateur.setNomRue(rs.getString("rue"));
 					utilisateur.setCodePostale(rs.getInt("code_postal"));
 					utilisateur.setVille(rs.getString("ville"));
