@@ -1,11 +1,17 @@
 package fr.eni.enchere.servlet;
 
 import java.io.IOException;
+
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import fr.eni.enchere.bll.ArticleManager;
+import fr.eni.enchere.bo.Article;
 
 /**
  * Servlet implementation class NewSaleServlet
@@ -34,8 +40,25 @@ public class NewSaleServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		
+		
+		String article = request.getParameter("article");
+		int noCategorie = Integer.parseInt(request.getParameter("nocategorie"));
+		String description = request.getParameter("description");
+		int prixInitial = Integer.parseInt(request.getParameter("prixinitial"));
+		String debutEnchere = request.getParameter("debutenchere");
+		String finEnchere = request.getParameter("finenchere");
+		
+		Article newArticle = new Article(noCategorie, article ,description,debutEnchere,finEnchere,prixInitial);
+		int idUtilisateur = Integer.parseInt( (String) request.getAttribute("idUtilisateur"));
+		int idCategorie = 1;
+		ArticleManager am = new ArticleManager();
+		
+		am.insertArticle(newArticle, idUtilisateur, idCategorie);
+		
+	
+		response.sendRedirect(request.getContextPath() + "/BidPageServlet");
+
 	}
 
 }

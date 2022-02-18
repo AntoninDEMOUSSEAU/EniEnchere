@@ -16,7 +16,7 @@ public class ArticleDAOImpl implements ArticleDAO{
 
 	
 	@Override
-	public void insertArticle(Article article, Utilisateur utilisateur, Categorie categorie) throws DALException, SQLException {
+	public void insertArticle(Article article, int idUtilisateur, int idCategorie) throws DALException, SQLException {
 		
 		Connection cnx = JdbcTools.getConnection();
 		PreparedStatement pstmt;
@@ -27,12 +27,12 @@ public class ArticleDAOImpl implements ArticleDAO{
 			pstmt = cnx.prepareStatement(INSERT_ARTICLE, PreparedStatement.RETURN_GENERATED_KEYS);
 			pstmt.setString(1, article.getNomArticle());
 			pstmt.setString(2, article.getDescription());
-			pstmt.setDate(3, (Date) article.getDatedebutEncheres());
-			pstmt.setDate(4, (Date) article.getDateFinEncheres());
+			pstmt.setString(3, article.getDatedebutEncheres());
+			pstmt.setString(4, article.getDateFinEncheres());
 			pstmt.setInt(5, article.getMiseAPrix());
 			pstmt.setInt(6, article.getPrixVente());
-			pstmt.setInt(7, utilisateur.getNoUtilisateur());
-			pstmt.setInt(8, categorie.getNoCategorie());
+			pstmt.setInt(7, idUtilisateur);
+			pstmt.setInt(8, idCategorie);
 			pstmt.executeUpdate();
 			rs = pstmt.getGeneratedKeys();
 			if(rs.next())

@@ -12,11 +12,11 @@
 	<h2>Nouvelle vente</h2>
 	<div class="form-group">
 		<label for="categories" class="col-sm-2 col-form-label">Article : </label>
-        <input type="text" class="form-control" name="rechercher" placeholder="Le nom de l'article">
+        <input type="text" class="form-control" name="article" placeholder="Le nom de l'article">
     </div>
 	<label for="categories" class="col-sm-2 col-form-label">Catégories</label>
 	    <div class="col-sm-10">
-	        <select class="form-select" aria-label="Default select example">
+	        <select class="form-select" aria-label="Default select example" name="nocategorie">
 	            <option selected>Toutes</option>
 	            <option value="1">One</option>
 	            <option value="2">Two</option>
@@ -25,7 +25,7 @@
 	    </div>
 	<div class="mb-3">
 	  <label for="exampleFormControlTextarea1" class="form-label">Description</label>
-	  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+	  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="description"></textarea>
 	</div>
 	<div>
 		<label for="exampleFormControlTextarea1" class="form-label">Photo de l'article</label>
@@ -36,15 +36,15 @@
 	</div>
 	<label for="prixinitial" class="col-sm-2 col-form-label">Prix initial : </label>
 	<div class="col-sm-10">
-		<input type="number" value="150">        
+		<input type="number" value="150" name="prixinitial">        
 	</div>
 	<label for="prixinitial" class="col-sm-2 col-form-label">Début de l'enchère : </label>
 	<div class="col-sm-10">
-		<input type="date">        
+		<input type="date" name="debutenchere">        
 	</div>
 	<label for="prixinitial" class="col-sm-2 col-form-label">Fin de l'enchère : </label>
 	<div class="col-sm-10">
-		<input type="date">        
+		<input type="date" name="finenchere">        
 	</div>	
 	<div class="container">
   	<div class="row align-items-start">
