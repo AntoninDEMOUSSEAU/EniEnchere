@@ -16,11 +16,12 @@ public class ArticleManager {
 	}
 
 	public void insertArticle(Article article) {
+		/*
 		try {
-			DAOFactory.getArticleDAO().insertArticle(article);
+			DAOFactory.getArticleDAO().insertArticle(article); 
 		} catch (DALException | SQLException e) {
 			e.printStackTrace();
-		}
+		}*/
 	}
 	public Article selectArticleId(int noArticle) throws DALException {
 		Article article=null;
