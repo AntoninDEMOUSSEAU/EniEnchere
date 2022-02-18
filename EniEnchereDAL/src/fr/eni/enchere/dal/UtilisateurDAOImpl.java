@@ -63,8 +63,9 @@ public class UtilisateurDAOImpl implements UtilisateurDAO{
 
 			PreparedStatement pstmt = cnx.prepareStatement(SELECT_UTILISATEUR_BY_EMAIL);
 			pstmt.setString(1, email);
+			pstmt.setString(2, password);
 			ResultSet rs = pstmt.executeQuery();
-			//vérifier si besoin d'un boolean pour travailler dans la boucle
+			//vï¿½rifier si besoin d'un boolean pour travailler dans la boucle
 			while(rs.next())
 			{
 				
@@ -78,6 +79,8 @@ public class UtilisateurDAOImpl implements UtilisateurDAO{
 					utilisateur.setCodePostale(rs.getInt("code_postal"));
 					utilisateur.setVille(rs.getString("ville"));
 					utilisateur.setMotDePasse(rs.getString("mot_de_passe"));
+					utilisateur.setCredit(rs.getInt("credit"));
+					utilisateur.setAdministrateur(rs.getBoolean("adminsitrateur"));
 				
 					
 			}

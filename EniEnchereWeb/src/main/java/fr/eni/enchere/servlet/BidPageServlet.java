@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class BidPageServlet
@@ -28,8 +29,14 @@ public class BidPageServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/BidPage.jsp");
-		rd.forward(request, response);
+		HttpSession session = request.getSession();
+		
+		if (session.getAttribute("idUtilisateur") == null) {
+			response.sendRedirect(request.getContextPath() + "/LoginServlet");
+		} else {
+			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/BidPage.jsp");
+			rd.forward(request, response);
+		}
 	}
 
 	/**
