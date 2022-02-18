@@ -42,6 +42,7 @@ public class AccountServlet extends HttpServlet {
 		} catch (DALException e) {
 			e.printStackTrace();
 		}
+        
 		getServletContext().getRequestDispatcher("/WEB-INF/Account.jsp").forward(request, response);
 	
 	}

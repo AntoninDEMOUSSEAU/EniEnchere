@@ -18,37 +18,41 @@
 			<div class="form-row row align-items-center">
 				<div class="">
 					<label>Pseudo </label> 
-					<input type="text" value="${utilisateur.getPseudo()}" class="form-control" placeholder="" disabled >
+					<input type="text"  value="${utilisateur.getPseudo()}" class="form-control" placeholder="" disabled >
 				</div>
 				<div class="">
 					<label>Nom</label> 
-					<input type="text" <c:out value="${utilisateur.getNom()}"></c:out> class="form-control" placeholder=" " disabled>
+					<input type="text" value="${utilisateur.getNom()}" class="form-control" placeholder=" " disabled>
 				</div>
 				<div class="">
 					<label>Prenom </label> 
-					<input type="text"  <c:out value="${utilisateur.getPseudo()}"></c:out> class="form-control" placeholder="" disabled>
+					<input type="text"  value="${utilisateur.getPrenom()}" class="form-control" placeholder="" disabled>
 				</div>
 			</div>
 			<div class="">
 				<label>Email </label> 
-				<input type="email" <c:out value="${utilisateur.getPrenom()}"></c:out> class="form-control" placeholder="" disabled> 
+				<input type="email" value="${utilisateur.getEmail()}" class="form-control" placeholder="" disabled> 
+			</div>	
+			<div class="">
+				<label>Telephone </label> 
+				<input type="text" value="${utilisateur.getTelephone()}" class="form-control" placeholder="" disabled> 
 			</div>	
 				<div class="">
 					<div class="">
 					<label>Rue</label> 
-					<input type="text" <c:out value="${utilisateur.getPseudo()}"></c:out> class="form-control" disabled>
+					<input type="text" value="${utilisateur.getNomRue()}" class="form-control" disabled>
 					</div>	
 				</div>
 				<div class="">
 					<div class="">
 					<label>Code Postal</label> 
-					<input type="text" <c:out value="${utilisateur.getPseudo()}"></c:out> class="form-control" disabled>
+					<input type="text" value="${utilisateur.getCodePostale()}" class="form-control" disabled>
 					</div>	
 				</div>
 				<div class="">
 					<div class="">
 					<label>Ville</label> 
-					<input type="text" <c:out value="${utilisateur.getPseudo()}"></c:out> class="form-control" disabled>
+					<input type="text" value="${utilisateur.getVille()}" class="form-control" disabled>
 					</div>	
 				</div>
 				

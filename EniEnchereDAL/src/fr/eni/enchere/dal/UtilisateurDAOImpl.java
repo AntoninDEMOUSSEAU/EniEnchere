@@ -115,7 +115,7 @@ public class UtilisateurDAOImpl implements UtilisateurDAO{
 					utilisateur.setNomRue(rs.getString("rue"));
 					utilisateur.setCodePostale(rs.getInt("code_postal"));
 					utilisateur.setVille(rs.getString("ville"));
-					utilisateur.setMotDePasse(rs.getString("mot_de_passe"));
+					
 			}
 			
 			
