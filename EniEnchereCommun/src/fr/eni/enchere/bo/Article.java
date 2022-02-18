@@ -7,8 +7,8 @@ public class Article {
 	private int noArticle;
 	private String nomArticle;
 	private String description;
-	private Date datedebutEncheres;
-	private Date dateFinEncheres;
+	private String datedebutEncheres;
+	private String dateFinEncheres;
 	private int miseAPrix;
 	private int prixVente;
 	private String etatVente;
@@ -17,7 +17,7 @@ public class Article {
 		super();
 	}
 	
-	public Article(int noArticle, String nomArticle, String description, Date datedebutEncheres, Date dateFinEncheres, int miseAPrix, int prixVente) {
+	public Article(int noArticle, String nomArticle, String description, String datedebutEncheres, String dateFinEncheres, int miseAPrix) {
 		super();
 		this.noArticle=noArticle;
 		this.nomArticle=nomArticle;
@@ -25,7 +25,6 @@ public class Article {
 		this.datedebutEncheres=datedebutEncheres;
 		this.dateFinEncheres=dateFinEncheres;
 		this.miseAPrix=miseAPrix;
-		this.prixVente=prixVente;
 	}
 	
 	public int getNoArticle() {
@@ -46,16 +45,16 @@ public class Article {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public Date getDatedebutEncheres() {
+	public String getDatedebutEncheres() {
 		return datedebutEncheres;
 	}
-	public void setDatedebutEncheres(Date datedebutEncheres) {
+	public void setDatedebutEncheres(String datedebutEncheres) {
 		this.datedebutEncheres = datedebutEncheres;
 	}
-	public Date getDateFinEncheres() {
+	public String getDateFinEncheres() {
 		return dateFinEncheres;
 	}
-	public void setDateFinEncheres(Date dateFinEncheres) {
+	public void setDateFinEncheres(String dateFinEncheres) {
 		this.dateFinEncheres = dateFinEncheres;
 	}
 	public int getMiseAPrix() {

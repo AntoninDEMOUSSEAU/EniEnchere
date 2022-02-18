@@ -48,14 +48,14 @@ public class LoginServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// Récupérer les données passer dans le formulaire
+		// Rï¿½cupï¿½rer les donnï¿½es passer dans le formulaire
 		
 	
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
 		Utilisateur currentUser = null;
 		
-		// Vérifier avec les données passer que un utilisateur correspond dans la base de donnée
+		// Vï¿½rifier avec les donnï¿½es passer que un utilisateur correspond dans la base de donnï¿½e
 		
 		UtilisateurManager manager = new UtilisateurManager();
 		
