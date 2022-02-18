@@ -15,7 +15,7 @@
 		<div>
 			<a class="underlineHover" href="<%=request.getContextPath()%>/VendreArticleServlet ">Vendre un article</a>
 			<a class="underlineHover" href="<%=request.getContextPath()%>/MonProfilServlet ">Mon Profil</a>
-			<a class="underlineHover" href="<%=request.getContextPath()%>/LogoutServlet ">Déconnexion</a>
+			<a class="underlineHover" href="<%=request.getContextPath()%>/DeconnexionServlet">Déconnexion</a>
 		</div>
 	<h2>Filtres : </h2>		
 		<div class="form-check">

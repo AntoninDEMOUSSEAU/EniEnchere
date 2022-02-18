@@ -2,6 +2,7 @@ package fr.eni.enchere.servlet;
 
 import java.io.IOException;
 
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -33,7 +34,14 @@ public class LoginServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		getServletContext().getRequestDispatcher("/WEB-INF/LoginPage.jsp").forward(request, response);
+		HttpSession session = request.getSession();
+		
+		if (session.getAttribute("idUtilisateur") != null) {
+			response.sendRedirect(request.getContextPath() + "/BidPageServlet");
+		} else {
+			getServletContext().getRequestDispatcher("/WEB-INF/LoginPage.jsp").forward(request, response);
+		}
+		
 	}
 
 	/**
@@ -42,6 +50,7 @@ public class LoginServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// Récupérer les données passer dans le formulaire
 		
+	
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
 		Utilisateur currentUser = null;
@@ -58,6 +67,7 @@ public class LoginServlet extends HttpServlet {
 		}
 		
 		HttpSession session = request.getSession();
+	
 		
 		session.setAttribute("idUtilisateur", currentUser.getNoUtilisateur());
 		
