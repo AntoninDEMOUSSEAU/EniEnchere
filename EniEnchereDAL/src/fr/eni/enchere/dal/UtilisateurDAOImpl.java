@@ -10,7 +10,7 @@ import fr.eni.enchere.bo.Utilisateur;
 public class UtilisateurDAOImpl implements UtilisateurDAO{
 	
 	private static final String INSERT_UTILISATEUR = "insert into Utilisateur(pseudo, nom, prenom,email,telephone,rue,code_postal,ville,mot_de_passe) values(?,?,?,?,?,?,?,?,?);";
-	private static final String SELECT_UTILISATEUR_BY_EMAIL="select pseudo, nom, prenom, email, telephone, rue, code_postal,ville from Utilisateur where email=?";
+	private static final String SELECT_UTILISATEUR_BY_EMAIL="select pseudo, nom, prenom, email, telephone, rue, code_postal,ville from Utilisateur where email=? AND password=?";
 	private static final String SELECT_UTILISATEUR_BY_ID="select pseudo, nom, prenom, email, telephone, rue, code_postal,ville from Utilisateur where id=?";
 
 	@Override

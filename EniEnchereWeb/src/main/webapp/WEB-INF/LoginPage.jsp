@@ -28,7 +28,7 @@
 	
 	    <!-- Login Form -->
 	    <form method="post" action="<%= request.getContextPath() %>/LoginServlet">
-	      <input type="text" id="login" class="fadeIn second" name="login" placeholder="Nom d'utilisateur">
+	      <input type="text" id="login" class="fadeIn second" name="email" placeholder="Nom d'utilisateur">
 	      <input type="text" id="password" class="fadeIn third" name="password" placeholder="Mot de passe">
 	      <input class="col" type="submit" class="fadeIn fourth" value="Se Connecter">
 	    </form>

@@ -9,8 +9,9 @@ import javax.servlet.http.HttpServletResponse;
 
 
 import fr.eni.enchere.bll.UtilisateurManager;
-
 import fr.eni.enchere.bo.Utilisateur;
+
+
 
 
 
