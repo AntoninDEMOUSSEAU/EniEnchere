@@ -9,42 +9,44 @@
 <title>Account</title>
 </head>
 <body>
+
+
 <h1> Mon Pseudo </h1>
 	<form>
 			<div class="form-row row align-items-center">
 				<div class="">
 					<label>Pseudo </label> 
-					<input type="text" class="form-control" placeholder="" disabled >
+					<input type="text" value="" class="form-control" placeholder="" disabled >
 				</div>
 				<div class="">
 					<label>Nom</label> 
-					<input type="text" class="form-control" placeholder=" " disabled>
+					<input type="text" value="" class="form-control" placeholder=" " disabled>
 				</div>
 				<div class="">
 					<label>Prenom </label> 
-					<input type="text" class="form-control" placeholder="" disabled>
+					<input type="text"  value="" class="form-control" placeholder="" disabled>
 				</div>
 			</div>
 			<div class="">
 				<label>Email </label> 
-				<input type="email" class="form-control" placeholder="" disabled> 
+				<input type="email" value="" class="form-control" placeholder="" disabled> 
 			</div>	
 				<div class="">
 					<div class="">
 					<label>Rue</label> 
-					<input type="text" class="form-control" disabled>
+					<input type="text" value="" class="form-control" disabled>
 					</div>	
 				</div>
 				<div class="">
 					<div class="">
 					<label>Code Postal</label> 
-					<input type="text" class="form-control" disabled>
+					<input type="text" value="" class="form-control" disabled>
 					</div>	
 				</div>
 				<div class="">
 					<div class="">
 					<label>Ville</label> 
-					<input type="text" class="form-control" disabled>
+					<input type="text" value="" class="form-control" disabled>
 					</div>	
 				</div>
 				

@@ -7,6 +7,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import javax.websocket.Session;
+
+import fr.eni.enchere.bll.UtilisateurManager;
+import fr.eni.enchere.bo.Utilisateur;
+import fr.eni.enchere.dal.DALException;
 
 /**
  * Servlet implementation class AccountServlet
@@ -26,7 +32,18 @@ public class AccountServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doGet(request, response);
-	}
+		UtilisateurManager utilisateurManager = new UtilisateurManager();
+        HttpSession session = request.getSession();
+        int id = (int) session.getAttribute("idUtilisateur");
+		try {
+			utilisateurManager.AfficherCompteUtilisateurById(id);
+		} catch (DALException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		response.sendRedirect(request.getContextPath() + "/LoginServlet");
+	}	
+	
 
 }

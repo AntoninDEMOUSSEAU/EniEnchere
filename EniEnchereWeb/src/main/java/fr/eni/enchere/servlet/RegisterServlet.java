@@ -42,7 +42,7 @@ public class RegisterServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// Ajouter confirm password, administrateur dans le formulaire
+
 		UtilisateurManager utilisateurManager = new UtilisateurManager();
 		
 		String pseudo = request.getParameter("pseudo");
@@ -70,7 +70,7 @@ public class RegisterServlet extends HttpServlet {
 	
 		utilisateurManager.Register(utilisateur);
 		
-		response.sendRedirect(request.getContextPath() + "/LoginPage");
+		response.sendRedirect(request.getContextPath() + "/LoginServlet");
 	}
 
 }
