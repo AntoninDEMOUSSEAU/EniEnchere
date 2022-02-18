@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import fr.eni.enchere.bll.UtilisateurManager;
+import fr.eni.enchere.bo.Utilisateur;
+import fr.eni.enchere.dal.DALException;
 
 /**
  * Servlet implementation class ConnectionServlet
@@ -45,6 +47,15 @@ public class LoginServlet extends HttpServlet {
 		// Vérifier avec les données passer que un utilisateur correspond dans la base de donnée
 		
 		UtilisateurManager manager = new UtilisateurManager();
+		
+		try {
+			Utilisateur currentUser = manager.LoginByEmail(email, password);
+			System.out.println(currentUser);
+		} catch (DALException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		 
 		
 		// manager.LoginByEmail();
 		
