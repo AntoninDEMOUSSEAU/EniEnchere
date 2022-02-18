@@ -73,6 +73,8 @@ public class LoginServlet extends HttpServlet {
 		
 		// Rediriger sur la page profile
 	
+		System.out.println(session.getAttribute("idUtilisateur"));
+		
 		response.sendRedirect(request.getContextPath() + "/BidPageServlet");
 		
 	}

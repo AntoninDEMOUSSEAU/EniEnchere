@@ -10,6 +10,7 @@
 <body>
 	<h1>ENI-Enchères</h1>
 	<h2>Nouvelle vente</h2>
+	<form action="" method="post">
 	<div class="form-group">
 		<label for="categories" class="col-sm-2 col-form-label">Article : </label>
         <input type="text" class="form-control" name="article" placeholder="Le nom de l'article">
@@ -56,8 +57,9 @@
 	    </div>
 	</div>
 	<div>
-		<button type="button" class="btn btn-primary">Enregistrer</button>
-		<button type="button" class="btn btn-primary">Annuler</button>
+		<button type="submit" class="btn btn-primary">Enregistrer</button>
+		<button type="submit" class="btn btn-primary">Annuler</button>
 	</div>  
+	</form>
 </body>
 </html>
