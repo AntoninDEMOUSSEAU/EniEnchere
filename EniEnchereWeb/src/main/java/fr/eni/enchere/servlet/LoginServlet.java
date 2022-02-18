@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import fr.eni.enchere.bll.UtilisateurManager;
 import fr.eni.enchere.bo.Utilisateur;
@@ -43,23 +44,22 @@ public class LoginServlet extends HttpServlet {
 		
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
+		Utilisateur currentUser = null;
 		
 		// Vérifier avec les données passer que un utilisateur correspond dans la base de donnée
 		
 		UtilisateurManager manager = new UtilisateurManager();
 		
 		try {
-			Utilisateur currentUser = manager.LoginByEmail(email, password);
-			System.out.println(currentUser);
+			currentUser = manager.LoginByEmail(email, password);
 		} catch (DALException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		 
 		
-		// manager.LoginByEmail();
+		HttpSession session = request.getSession();
 		
-		// Mettre en session l'id de l'utilisateur
+		session.setAttribute("idUtilisateur", currentUser.getNoUtilisateur());
 		
 		// Rediriger sur la page profile
 	
