@@ -41,6 +41,7 @@ public class NewSaleServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		HttpSession session = request.getSession();
 		
 		String article = request.getParameter("article");
 		int noCategorie = Integer.parseInt(request.getParameter("nocategorie"));
@@ -49,9 +50,12 @@ public class NewSaleServlet extends HttpServlet {
 		String debutEnchere = request.getParameter("debutenchere");
 		String finEnchere = request.getParameter("finenchere");
 		
-		Article newArticle = new Article(noCategorie, article ,description,debutEnchere,finEnchere,prixInitial);
-		int idUtilisateur = Integer.parseInt( (String) request.getAttribute("idUtilisateur"));
+		Integer idUtilisateur = (Integer) session.getAttribute("idUtilisateur");
+		
 		int idCategorie = 1;
+		
+		Article newArticle = new Article(article ,description,debutEnchere,finEnchere,prixInitial);
+		
 		ArticleManager am = new ArticleManager();
 		
 		am.insertArticle(newArticle, idUtilisateur, idCategorie);

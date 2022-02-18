@@ -10,7 +10,7 @@ import fr.eni.enchere.bo.Utilisateur;
 public class UtilisateurDAOImpl implements UtilisateurDAO{
 	
 	private static final String INSERT_UTILISATEUR = "insert into Utilisateurs(pseudo, nom, prenom,email,telephone,rue,code_postal,ville,mot_de_passe,credit,administrateur) values(?,?,?,?,?,?,?,?,?,?,?);";
-	private static final String SELECT_UTILISATEUR_BY_EMAIL="select pseudo, nom, prenom, email, telephone, rue, code_postal,ville from Utilisateurs where email=?";
+	private static final String SELECT_UTILISATEUR_BY_EMAIL="select * from Utilisateurs where email=? AND mot_de_passe=?";
 	private static final String SELECT_UTILISATEUR_BY_ID="select pseudo, nom, prenom, email, telephone, rue, code_postal,ville from Utilisateurs where no_utilisateur=?";
 	
 	@Override
@@ -28,8 +28,8 @@ public class UtilisateurDAOImpl implements UtilisateurDAO{
 			pstmt.setString(2, utilisateur.getNom());
 			pstmt.setString(3, utilisateur.getPrenom());
 			pstmt.setString(4, utilisateur.getEmail());
-			pstmt.setString(5, utilisateur.getNomRue());
-			pstmt.setInt(6, utilisateur.getTelephone());
+			pstmt.setInt(5, utilisateur.getTelephone());
+			pstmt.setString(6, utilisateur.getNomRue());
 			pstmt.setInt(7, utilisateur.getCodePostale());
 			pstmt.setString(8, utilisateur.getVille());
 			pstmt.setString(9, utilisateur.getMotDePasse());
@@ -80,8 +80,7 @@ public class UtilisateurDAOImpl implements UtilisateurDAO{
 					utilisateur.setVille(rs.getString("ville"));
 					utilisateur.setMotDePasse(rs.getString("mot_de_passe"));
 					utilisateur.setCredit(rs.getInt("credit"));
-					utilisateur.setAdministrateur(rs.getInt("adminsitrateur"));
-				
+					utilisateur.setAdministrateur(rs.getInt("administrateur"));
 					
 			}
 			

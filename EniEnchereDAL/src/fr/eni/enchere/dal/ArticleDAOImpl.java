@@ -12,7 +12,7 @@ import fr.eni.enchere.bo.Utilisateur;
 
 public class ArticleDAOImpl implements ArticleDAO{
 
-	private static final String INSERT_ARTICLE = "insert into ARTICLES(nom_article, description, date_debut_encheres, date_fin_encheres, prix_initial, prix_vente, no_utilisateur, no_categorie) values(?,?,?,?,?,?,?,?);";
+	private static final String INSERT_ARTICLE = "insert into ARTICLES_VENDUS(nom_article, description, date_debut_encheres, date_fin_encheres, prix_initial, prix_vente, no_utilisateur, no_categorie) values(?,?,?,?,?,?,?,?);";
 
 	
 	@Override
