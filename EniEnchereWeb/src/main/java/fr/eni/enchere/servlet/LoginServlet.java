@@ -2,11 +2,14 @@ package fr.eni.enchere.servlet;
 
 import java.io.IOException;
 
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import fr.eni.enchere.bll.UtilisateurManager;
 import fr.eni.enchere.bo.Utilisateur;
@@ -31,34 +34,42 @@ public class LoginServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		getServletContext().getRequestDispatcher("/WEB-INF/LoginPage.jsp").forward(request, response);
+		HttpSession session = request.getSession();
+		
+		if (session.getAttribute("idUtilisateur") != null) {
+			response.sendRedirect(request.getContextPath() + "/BidPageServlet");
+		} else {
+			getServletContext().getRequestDispatcher("/WEB-INF/LoginPage.jsp").forward(request, response);
+		}
+		
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// Récupérer les données passer dans le formulaire
+		// Rï¿½cupï¿½rer les donnï¿½es passer dans le formulaire
 		
+	
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
+		Utilisateur currentUser = null;
 		
-		// Vérifier avec les données passer que un utilisateur correspond dans la base de donnée
+		// Vï¿½rifier avec les donnï¿½es passer que un utilisateur correspond dans la base de donnï¿½e
 		
 		UtilisateurManager manager = new UtilisateurManager();
 		
 		try {
-			Utilisateur currentUser = manager.LoginByEmail(email, password);
-			System.out.println(currentUser);
+			currentUser = manager.LoginByEmail(email, password);
 		} catch (DALException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		 
 		
-		// manager.LoginByEmail();
+		HttpSession session = request.getSession();
+	
 		
-		// Mettre en session l'id de l'utilisateur
+		session.setAttribute("idUtilisateur", currentUser.getNoUtilisateur());
 		
 		// Rediriger sur la page profile
 	
