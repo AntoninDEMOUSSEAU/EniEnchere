@@ -13,14 +13,14 @@ public class Utilisateur {
 	private String ville;
 	private String motDePasse;
 	private int credit;
-	private boolean administrateur;
+	private int administrateur;
 	
 	public Utilisateur() {
 		
 	}
 		
 	public Utilisateur(String pseudo, String nom, String prenom, String email, int telephone, String nomRue,
-			int codePostale, String ville, String motDePasse) {
+			int codePostale, String ville, String motDePasse, int administrateur) {
 		super();
 		this.pseudo = pseudo;
 		this.nom = nom;
@@ -31,6 +31,7 @@ public class Utilisateur {
 		this.codePostale = codePostale;
 		this.ville = ville;
 		this.motDePasse = motDePasse;
+		this.administrateur=administrateur;
 	}
 
 	public int getNoUtilisateur() {
@@ -84,6 +85,14 @@ public class Utilisateur {
 	public String getVille() {
 		return ville;
 	}
+	public int getAdministrateur() {
+		return administrateur;
+	}
+
+	public void setAdministrateur(int administrateur) {
+		this.administrateur = administrateur;
+	}
+
 	public void setVille(String ville) {
 		this.ville = ville;
 	}
@@ -99,12 +108,7 @@ public class Utilisateur {
 	public void setCredit(int credit) {
 		this.credit = credit;
 	}
-	public boolean isAdministrateur() {
-		return administrateur;
-	}
-	public void setAdministrateur(boolean administrateur) {
-		this.administrateur = administrateur;
-	}
+
 	
 	@Override
 	public String toString() {

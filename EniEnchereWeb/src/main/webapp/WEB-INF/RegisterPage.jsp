@@ -20,10 +20,10 @@
 						<input type="text" class="form-control" name="pseudo" placeholder="">
 					</div>
 					<div class="">
-						<label>Nom</label> <input type="text" class="form-control" placeholder=" ">
+						<label>Nom</label> <input type="text" class="form-control" name="nom" placeholder=" ">
 					</div>
 					<div class="">
-						<label>Prenom </label> <input type="text" class="form-control" name="nom" placeholder="">
+						<label>Prenom </label> <input type="text" class="form-control" name="prenom" placeholder="">
 					</div>
 				</div>
 				<div class="">
@@ -63,6 +63,7 @@
 						<label>Confirmez votre mot de passe</label> <input
 							class="form-control" type="password" name="confirm_password">
 					</div>
+				
 
 					<div class="form-row">
 						<button type="submit" class="btn btn-primary btn-block">Créer</button>
