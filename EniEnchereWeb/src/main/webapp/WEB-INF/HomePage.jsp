@@ -1,6 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-    
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ page import="fr.eni.enchere.bo.*" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>  
 
 <!DOCTYPE html>
 <html>
@@ -15,18 +16,18 @@
     <div class="container">
         <div class="row">
             <div class="col-12 mt-5">
-                <h1 class="title">ENI-Enchères</h1>
+                <h1 class="title">ENI-EnchÃ¨res</h1>
                 <a href="<%= request.getContextPath() %>/RegisterServlet">S'inscrire</a> - <a href="<%= request.getContextPath() %>/RegisterServlet">Se connecter</a>
             </div>
         </div>
+       
 
         <div class="row">
             <h4 class="mt-3">Filtres :</h4>
             <div class="mb-3 row">
-                <label for="categories" class="col-sm-2 col-form-label">Catégories</label>
+                <label for="categories" class="col-sm-2 col-form-label">CatÃ©gories</label>
                 <div class="col-sm-10">
-                    <select class="form-select" aria-label="Default select example">
-                        <option selected>Toutes</option>
+                    <select class="form-select" aria-label="Default select example">                        
                         <option value="1">One</option>
                         <option value="2">Two</option>
                         <option value="3">Three</option>
@@ -40,48 +41,28 @@
 
             <button type="submit" class="btn btn-primary btn-lg mt-3">Rechercher</button>
         </div>
-
-        <div class="row mt-3">
-            <div class="col-12">
-                <div class="card mb-3" style="max-width: 540px;">
-                    <div class="row g-0">
-                      <div class="col-md-4">
-                        <img src="https://via.placeholder.com/250C/" class="img-fluid rounded-start" alt="...">
-                      </div>
-                      <div class="col-md-8">
-                        <div class="card-body">
-                          <h5 class="card-title">PC gamer pour travailler</h5>
-                          <p class="card-text">Prix : 210 points Classement : 2</p>
-                          <p class="card-text">Fin de l'enchère : 10/08/2018</p>
-                          <p class="card-text">Retrait : 10 allée des Alouettes 44800 Saint Herblain</p>
-                          <p class="card-text">Vendeur : jojo44</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-12">
-                <div class="card mb-3" style="max-width: 540px;">
-                    <div class="row g-0">
-                      <div class="col-md-4">
-                        <img src="https://via.placeholder.com/250C/" class="img-fluid rounded-start" alt="...">
-                      </div>
-                      <div class="col-md-8">
-                        <div class="card-body">
-                          <h5 class="card-title">Rocket stove pour riz et pâtes</h5>
-                          <p class="card-text">Prix : 185 points</p>
-                          <p class="card-text">Fin de l'enchère : 09/10/2018</p>
-                          <p class="card-text">Retrait : 5 rue des Pinsons 44000 Nantes</p>
-                          <p class="card-text">Vendeur : NineJea</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-            </div>
-        </div>
-    </div>
+		<c:forEach items="${listeArticle}" var="article" >
+			<div class="row mt-3">
+		            <div class="col-12">
+		                <div class="card mb-3" style="max-width: 540px;">
+		                    <div class="row g-0">
+		                      <div class="col-md-4">
+		                        <img src="https://via.placeholder.com/250C/" class="img-fluid rounded-start" alt="...">
+		                      </div>
+		                      <div class="col-md-8">
+		                        <div class="card-body">
+		                          <h5 class="card-title">${article.getNomArticle()}</h5>
+		                          <p class="card-text">Prix de dÃ©part : ${article.getPrixVente()} â‚¬</p>
+		                          <p class="card-text">Date de fin d'enchÃ¨re : ${article.getDateFinEncheres()}</p>
+		                          <p class="card-text">Adresse de retrait : ${article.getRetrait().getCodePostal()} ${article.getRetrait().getNomRue()} Ã  ${article.getRetrait().getVille()}</p>
+		                          <p class="card-text">Vendu par ${article.getUtilisateur().getPseudo()}</p>
+		                       	</div>
+		                      </div>
+		                    </div>
+		                  </div>
+		            </div>
+		        </div>
+		</c:forEach>
+	  </div>      
 </body>
 </html>
