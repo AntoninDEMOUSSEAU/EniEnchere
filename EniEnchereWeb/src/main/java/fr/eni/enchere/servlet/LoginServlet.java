@@ -50,32 +50,43 @@ public class LoginServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// R�cup�rer les donn�es passer dans le formulaire
 		
+		HttpSession session = request.getSession();
 	
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
 		Utilisateur currentUser = null;
-		
-		// V�rifier avec les donn�es passer que un utilisateur correspond dans la base de donn�e
-		
+		boolean error = false; 
+				
 		UtilisateurManager manager = new UtilisateurManager();
-		
+	
+	
 		try {
+			
 			currentUser = manager.LoginByEmail(email, password);
+			
+			if (currentUser.getNoUtilisateur() <= 0) {	
+				error = true;
+				response.sendRedirect(request.getContextPath() + "/LoginServlet");
+				session.setAttribute("ErrorLogin", "Erreur veuillez recommencer");
+			} else {
+				error = false;
+			}
+			
+			System.out.println(session.getAttribute("idUtilisateur"));
 		} catch (DALException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		HttpSession session = request.getSession();
-	
-		
-		session.setAttribute("idUtilisateur", currentUser.getNoUtilisateur());
-		
+				
 		// Rediriger sur la page profile
-	
-		System.out.println(session.getAttribute("idUtilisateur"));
 		
-		response.sendRedirect(request.getContextPath() + "/BidPageServlet");
+		
+		
+		if (error == false) {
+			session.setAttribute("idUtilisateur", currentUser.getNoUtilisateur());
+			response.sendRedirect(request.getContextPath() + "/BidPageServlet");
+		}
+		
 		
 	}
 

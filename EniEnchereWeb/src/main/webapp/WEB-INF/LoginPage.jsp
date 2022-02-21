@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c" %>
     
     
 <!DOCTYPE html>
@@ -24,11 +25,14 @@
 	    <div class="fadeIn first">
 	      <img src="..\Picture\User_icon_2.png" id="icon" alt="User Icon" />
 	    </div>
-	
+	    
+	     <c:if test="${ !empty sessionScope.ErrorLogin }">
+        	<div class="alert alert-danger">${sessionScope.ErrorLogin }</div>
+    	</c:if>
 	
 	    <!-- Login Form -->
 	    <form method="post" action="<%= request.getContextPath() %>/LoginServlet">
-	      <input type="text" id="login" class="fadeIn second" name="email" placeholder="Nom d'utilisateur">
+	      <input type="text" id="login" class="fadeIn second" name="email" placeholder="Nom d'utilisateur" value="${error}">
 	      <input type="text" id="password" class="fadeIn third" name="password" placeholder="Mot de passe">
 	      <input class="col" type="submit" class="fadeIn fourth" value="Se Connecter">
 	    </form>
@@ -40,6 +44,8 @@
 	    </div>
 	
 	  </div>
+	  
+	 <c:set var="ErrorLogin" value="" scope="session" />
 </div>
 </body>
 </html>
