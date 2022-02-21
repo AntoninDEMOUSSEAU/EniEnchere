@@ -14,7 +14,7 @@
 <body>
 
 <h1> Mon Pseudo </h1>
-	<form>
+	<form method="get"  action="${pageContext.request.contextPath}/ModifyAccountPage">
 			<div class="form-row row align-items-center">
 				<div class="">
 					<label>Pseudo </label> 
@@ -58,8 +58,8 @@
 				
 			
 				<div class="form-row">
-					<button type="submit" class="btn btn-primary btn-block">Modifier</button>
-					<button type="submit" class="btn btn-primary btn-block">Retour</button>
+					<button type="submit" class="btn btn-primary btn-lg active">Modifier</button>
+					<a href="<%=request.getContextPath()%>/HomePageServlet " class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Retour</a>
 				
 				</div>
 	</form>

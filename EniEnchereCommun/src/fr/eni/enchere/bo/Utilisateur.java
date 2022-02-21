@@ -9,7 +9,7 @@ public class Utilisateur {
 	private String email;
 	private String telephone;
 	private String nomRue;
-	private int codePostale;
+	private String codePostale;
 	private String ville;
 	private String motDePasse;
 	private int credit;
@@ -20,7 +20,7 @@ public class Utilisateur {
 	}
 	
 	public Utilisateur(int noUtilisateur, String pseudo, String nom, String prenom, String email, String telephone, String nomRue,
-			int codePostale, String ville, String motDePasse) {
+			String codePostale, String ville, String motDePasse) {
 		super();
 		this.pseudo = pseudo;
 		this.nom = nom;
@@ -34,7 +34,7 @@ public class Utilisateur {
 	}
 		
 	public Utilisateur(String pseudo, String nom, String prenom, String email, String telephone, String nomRue,
-			int codePostale, String ville, String motDePasse, int administrateur) {
+			String codePostale, String ville, String motDePasse, int administrateur) {
 		super();
 		this.pseudo = pseudo;
 		this.nom = nom;
@@ -47,7 +47,7 @@ public class Utilisateur {
 		this.motDePasse = motDePasse;
 		this.administrateur=administrateur;
 	}
-
+	
 	public int getNoUtilisateur() {
 		return noUtilisateur;
 	}
@@ -90,10 +90,10 @@ public class Utilisateur {
 	public void setNomRue(String nomRue) {
 		this.nomRue = nomRue;
 	}
-	public int getCodePostale() {
+	public String getCodePostale() {
 		return codePostale;
 	}
-	public void setCodePostale(int codePostale) {
+	public void setCodePostale(String codePostale) {
 		this.codePostale = codePostale;
 	}
 	public String getVille() {

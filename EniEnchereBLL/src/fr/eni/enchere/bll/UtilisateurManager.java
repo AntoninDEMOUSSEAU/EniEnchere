@@ -23,6 +23,23 @@ public class UtilisateurManager {
 			e.printStackTrace();
 		}
 	}
+	
+	public void ModifyAccount(int id, Utilisateur utilisateur) throws DALException {
+		try {
+			DAOFactory.getUtilisateurDAO().ModifyAccount(id, utilisateur);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void DeleteAccount(int id ) throws DALException {
+		try {
+			DAOFactory.getUtilisateurDAO().DeleteAccount(id);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
 	public Utilisateur AfficherCompteUtilisateurById(int id) throws DALException {
 		Utilisateur utilisateur=null;
 		try {

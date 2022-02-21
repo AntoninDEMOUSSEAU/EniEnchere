@@ -51,10 +51,9 @@ public class RegisterServlet extends HttpServlet {
 		String email = request.getParameter("email");
 		String telephone = request.getParameter("telephone");
 		String nomRue = request.getParameter("rue");
-		int codePostal= Integer.parseInt(request.getParameter("codePostal"));
+		String codePostal= request.getParameter("codePostal");
 		String ville= request.getParameter("ville");
 		String password=request.getParameter("password");
-		String confirmPassword=request.getParameter("confirm_password");
 		
 		Utilisateur utilisateur = new Utilisateur();
 		
