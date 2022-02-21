@@ -6,8 +6,8 @@ public class Retrait {
 	private int codePostal;
 	private String ville;
 	
-	private Retrait() {
-		
+	public Retrait() {
+		super();
 	}
 	
 	public String getNomRue() {
