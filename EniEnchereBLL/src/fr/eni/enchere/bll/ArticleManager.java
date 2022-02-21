@@ -1,6 +1,8 @@
 package fr.eni.enchere.bll;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import fr.eni.enchere.bo.Article;
 import fr.eni.enchere.dal.ArticleDAO;
@@ -23,16 +25,16 @@ public class ArticleManager {
 			e.printStackTrace();
 		}
 	}
-	public Article selectArticleId(int noArticle) throws DALException {
-		Article article=null;
+	public List<Article> selectArticle() throws DALException {
+		List<Article> listeArticle= new ArrayList<Article>();
 		try {
-			 article=this.articleDao.selectArticleId(noArticle);
+			 listeArticle=this.articleDao.selectArticle();
 		} catch (DALException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return article;
+		return listeArticle;
 	}
 	
 }

@@ -1,7 +1,5 @@
 package fr.eni.enchere.bo;
 
-import java.util.Date;
-
 public class Article {
 
 	private int noArticle;
@@ -10,8 +8,10 @@ public class Article {
 	private String datedebutEncheres;
 	private String dateFinEncheres;
 	private int miseAPrix;
-	private int prixVente;
+	private String prixVente;
 	private String etatVente;
+	private Utilisateur utilisateur;
+	private Retrait retrait;
 	
 	public Article() {
 		super();
@@ -73,11 +73,11 @@ public class Article {
 	public void setMiseAPrix(int miseAPrix) {
 		this.miseAPrix = miseAPrix;
 	}
-	public int getPrixVente() {
+	public String getPrixVente() {
 		return prixVente;
 	}
-	public void setPrixVente(int prixVente) {
-		this.prixVente = prixVente;
+	public void setPrixVente(String string) {
+		this.prixVente = string;
 	}
 	public String getEtatVente() {
 		return etatVente;
@@ -90,6 +90,22 @@ public class Article {
 		return "ArticleVendu [noArticle=" + noArticle + ", nomArticle=" + nomArticle + ", description=" + description
 				+ ", datedebutEncheres=" + datedebutEncheres + ", dateFinEncheres=" + dateFinEncheres + ", miseAPrix="
 				+ miseAPrix + ", prixVente=" + prixVente + ", etatVente=" + etatVente + "]";
+	}
+
+	public Utilisateur getUtilisateur() {
+		return utilisateur;
+	}
+
+	public void setUtilisateur(Utilisateur utilisateur) {
+		this.utilisateur = utilisateur;
+	}
+
+	public Retrait getRetrait() {
+		return retrait;
+	}
+
+	public void setRetrait(Retrait retrait) {
+		this.retrait = retrait;
 	}
 	
 	
