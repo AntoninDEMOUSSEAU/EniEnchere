@@ -56,6 +56,7 @@ public class UtilisateurDAOImpl implements UtilisateurDAO{
 	public  Utilisateur LoginByEmail(String email,String password) throws DALException, SQLException{
 		Utilisateur utilisateur = new Utilisateur();
 		Connection cnx = null;
+		boolean error = false;
 		try {
 
 
@@ -85,7 +86,7 @@ public class UtilisateurDAOImpl implements UtilisateurDAO{
 			}
 			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			error = true;
 			e.printStackTrace();
 		}
 		cnx.close();
