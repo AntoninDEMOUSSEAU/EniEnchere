@@ -13,14 +13,8 @@
 </head>
 <body>
 
-    <div class="container">
-        <div class="row">
-            <div class="col-12 mt-5">
-                <h1 class="title">ENI-Enchères</h1>
-                <a href="<%= request.getContextPath() %>/RegisterServlet">S'inscrire</a> - <a href="<%= request.getContextPath() %>/RegisterServlet">Se connecter</a>
-            </div>
-        </div>
-       
+<%@ include file="Header.jsp" %>
+
 		<c:if test='${not empty sessionScope["idUtilisateur"]}'>
         <div class="row">
             <h2>Filtres : </h2>		

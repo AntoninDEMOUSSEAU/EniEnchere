@@ -9,6 +9,9 @@
 	</head>
 	
 	<body>
+	
+	<%@ include file="Header.jsp" %>
+	
 		<h1> Vous avez remporté l'enchère </h1>
 		
 		<div class="p-2">

@@ -11,10 +11,11 @@
 </head>
 <body>
 
+<%@ include file="Header.jsp" %>
+
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <h1>ENI-Enchères</h1>
                 <p class="text-bold">Jojo44 a remporté l'enchère</p>
                 <p>Rocket stove pour riz et pâtes</p>
 

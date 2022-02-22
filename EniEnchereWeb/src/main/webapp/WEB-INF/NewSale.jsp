@@ -8,7 +8,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Nouvelle vente</title>
 </head>
 <body>
-	<h1>ENI-Enchères</h1>
+
+<%@ include file="Header.jsp" %>
+
+
 	<h2>Nouvelle vente</h2>
 	<form action="" method="post">
 	<div class="form-group">
