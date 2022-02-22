@@ -21,11 +21,57 @@
             </div>
         </div>
        
-
+		<c:if test='${not empty sessionScope["idUtilisateur"]}'>
         <div class="row">
-            <h4 class="mt-3">Filtres :</h4>
+            <h2>Filtres : </h2>		
+		<div class="form-check">
+		  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+		  <label class="form-check-label" for="flexRadioDefault1">Achats</label>    
+			<div class="form-check">
+			  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+			  <label class="form-check-label" for="defaultCheck1">
+			    Enchère ouvertes
+			  </label>
+			</div>
+			<div class="form-check">
+			  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+			  <label class="form-check-label" for="defaultCheck1">
+			    Mes enchères en cours
+			  </label>
+			</div>
+			<div class="form-check">
+			  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+			  <label class="form-check-label" for="defaultCheck1">
+			    Mes enchères remportées
+			  </label>
+			</div>
+		</div>
+		<div class="form-check">
+		  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+		  <label class="form-check-label" for="flexRadioDefault1">Mes ventes</label>    
+			<div class="form-check">
+			  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+			  <label class="form-check-label" for="defaultCheck1">
+			    Mes ventes en cours
+			  </label>
+			</div>
+			<div class="form-check">
+			  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+			  <label class="form-check-label" for="defaultCheck1">
+			    Ventes non débutées
+			  </label>
+			</div>
+			<div class="form-check">
+			  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+			  <label class="form-check-label" for="defaultCheck1">
+			    Ventes terminées
+			  </label>
+			</div>
+		</div>
+		</c:if>
             <div class="mb-3 row">
                 <label for="categories" class="col-sm-2 col-form-label">Catégories</label>
+               		
                 <div class="col-sm-10">
                     <select class="form-select" aria-label="Default select example">                        
                         <option value="1">One</option>

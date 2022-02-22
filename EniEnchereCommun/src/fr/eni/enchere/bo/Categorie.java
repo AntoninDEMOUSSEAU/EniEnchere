@@ -6,7 +6,18 @@ public class Categorie {
 	private String libelle;
 	
 	public Categorie() {
-		
+		super();
+	}
+	
+	public Categorie(String libelle) {
+		super();
+		this.libelle=libelle;
+	}
+	
+	public Categorie(int noCategorie, String libelle) {
+		super();
+		this.libelle=libelle;
+		this.noCategorie=noCategorie;
 	}
 	
 	public int getNoCategorie() {

@@ -47,6 +47,7 @@ public class HomePageServlet extends HttpServlet {
 		}
 		
 		
+		
 		getServletContext().getRequestDispatcher("/WEB-INF/HomePage.jsp").forward(request, response);
 	}
 
