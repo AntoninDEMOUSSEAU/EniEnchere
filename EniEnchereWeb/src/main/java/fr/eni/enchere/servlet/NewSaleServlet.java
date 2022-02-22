@@ -52,7 +52,7 @@ public class NewSaleServlet extends HttpServlet {
 		
 		Integer idUtilisateur = (Integer) session.getAttribute("idUtilisateur");
 		
-		int idCategorie = 1;
+		int idCategorie = 2;
 		
 		Article newArticle = new Article(article ,description,debutEnchere,finEnchere,prixInitial);
 		
