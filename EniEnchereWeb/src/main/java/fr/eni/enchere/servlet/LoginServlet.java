@@ -36,7 +36,7 @@ public class LoginServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		
-		if (session.getAttribute("idUtilisateur") != null) {
+		if ((int) session.getAttribute("idUtilisateur") > 0) {
 			response.sendRedirect(request.getContextPath() + "/");
 		} else {
 			getServletContext().getRequestDispatcher("/WEB-INF/LoginPage.jsp").forward(request, response);
