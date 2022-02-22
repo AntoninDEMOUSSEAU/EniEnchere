@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import fr.eni.enchere.bo.Article;
+import fr.eni.enchere.bo.Utilisateur;
 import fr.eni.enchere.dal.ArticleDAO;
 import fr.eni.enchere.dal.DALException;
 import fr.eni.enchere.dal.DAOFactory;
@@ -49,5 +50,18 @@ public class ArticleManager {
 		}
 		
 		return listeArticle;
+	}
+	//Methode Antonin pour la gestion des enchere
+	public void encherir(Article article, Utilisateur utilisateur, int prix) {
+		// DAO SELECT USER
+		
+		// DAO SelectBestBid depuis la factory
+		
+		// DAO InsertBid
+		
+		
+		
+		
+		
 	}
 }
