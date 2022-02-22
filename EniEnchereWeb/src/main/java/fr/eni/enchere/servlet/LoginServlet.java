@@ -37,7 +37,7 @@ public class LoginServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		
 		if (session.getAttribute("idUtilisateur") != null) {
-			response.sendRedirect(request.getContextPath() + "/BidPageServlet");
+			response.sendRedirect(request.getContextPath() + "/");
 		} else {
 			getServletContext().getRequestDispatcher("/WEB-INF/LoginPage.jsp").forward(request, response);
 		}
@@ -84,7 +84,7 @@ public class LoginServlet extends HttpServlet {
 		
 		if (error == false) {
 			session.setAttribute("idUtilisateur", currentUser.getNoUtilisateur());
-			response.sendRedirect(request.getContextPath() + "/BidPageServlet");
+			response.sendRedirect(request.getContextPath() + "/");
 		}
 		
 		
