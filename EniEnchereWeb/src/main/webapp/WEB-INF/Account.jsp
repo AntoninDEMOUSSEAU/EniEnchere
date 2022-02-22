@@ -1,6 +1,6 @@
 <%@page import="fr.eni.enchere.bo.*"%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jstl/core" prefix="c" %>
   
 <!DOCTYPE html>
@@ -13,7 +13,9 @@
 </head>
 <body>
 
-<h1> Mon Pseudo </h1>
+<%@ include file="Header.jsp" %>
+
+<h1>${utilisateur.getPseudo()} </h1>
 	<form method="get"  action="${pageContext.request.contextPath}/ModifyAccountPage">
 			<div class="form-row row align-items-center">
 				<div class="">
