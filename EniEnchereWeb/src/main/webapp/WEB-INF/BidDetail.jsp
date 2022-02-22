@@ -11,10 +11,11 @@
 </head>
 <body>
 
+<%@ include file="Header.jsp" %>
+
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <h1 class="title">ENI-Enchères</h1>
                 <h2 class="text-center">Détail vente</h2>
                 <h3>PC Gamer pour travailler</h3>
                 <img src="https://via.placeholder.com/500x200" alt="">

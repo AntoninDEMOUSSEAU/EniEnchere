@@ -63,4 +63,12 @@ public class UtilisateurManager {
 		}
 		return utilisateur;
 	}
+
+	public void ForgottenPassword(String email, Utilisateur utilisateur) throws DALException {
+		try {
+			DAOFactory.getUtilisateurDAO().ForgottenPassword(email, utilisateur);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
 }

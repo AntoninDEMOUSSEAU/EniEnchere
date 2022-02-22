@@ -20,11 +20,6 @@
 	<div class="wrapper fadeInDown">
 	  <div id="formContent">
 	    <!-- Tabs Titles -->
-	
-	    <!-- Icon -->
-	    <div class="fadeIn first">
-	      <img src="..\Picture\User_icon_2.png" id="icon" alt="User Icon" />
-	    </div>
 	    
 	     <c:if test="${ !empty sessionScope.ErrorLogin }">
         	<div class="alert alert-danger">${sessionScope.ErrorLogin }</div>
@@ -39,7 +34,7 @@
 	
 	    <!-- Remind Passowrd -->
 	    <div id="formFooter">
-	      <a class="underlineHover" href="#">Mot de Passe oubliée ?</a><br>
+	      <a class="underlineHover" href="<%=request.getContextPath()%>/ForgottenPasswordServlet ">Mot de Passe oubliée ?</a><br>
 	      <a class="underlineHover" href="<%=request.getContextPath()%>/RegisterServlet ">Créer un compte</a>
 	    </div>
 	

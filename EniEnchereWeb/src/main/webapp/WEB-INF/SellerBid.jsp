@@ -11,10 +11,13 @@
 </head>
 <body>
 
+
+<%@ include file="Header.jsp" %>
+
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <h1>ENI-Enchères</h1>
+                
                 <p>Rocket stove pour riz et pâtes</p>
 
                 <img src="https://via.placeholder.com/350x150" alt="">

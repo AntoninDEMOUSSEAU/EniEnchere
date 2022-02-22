@@ -14,7 +14,7 @@ public class UtilisateurDAOImpl implements UtilisateurDAO{
 	private static final String SELECT_UTILISATEUR_BY_ID="SELECT pseudo, nom, prenom, email, telephone, rue, code_postal,ville from Utilisateurs where no_utilisateur=?";
 	private static final String UPDATE_UTILISATEUR_BY_ID="UPDATE Utilisateurs SET pseudo=?, nom=?, prenom=?, email=?, telephone=?, rue=?, code_postal=?, ville=?, mot_de_passe=?, credit=? WHERE no_utilisateur=?";  
 	private static final String DELETE_UTILISATEUR_BY_ID = "DELETE FROM Utilisateurs WHERE no_utilisateur=?";														
-	
+	private static final String UPDATE_PASSWORD= "UPDATE Utilisateurs SET mot_de_passe=? WHERE email=?";
 	
 	
 	@Override
@@ -171,6 +171,26 @@ public class UtilisateurDAOImpl implements UtilisateurDAO{
 		
 	}
 
+	@Override
+	public void ForgottenPassword(String email, Utilisateur utilisateur) throws SQLException {
+		Connection cnx = JdbcTools.getConnection();
+		try {	
+		PreparedStatement pstmt;
+		
+			pstmt = cnx.prepareStatement(UPDATE_PASSWORD);
+	
+			pstmt.setString(1, utilisateur.getMotDePasse());
+			pstmt.setString(2, utilisateur.getEmail());		
+			
+			pstmt.executeUpdate();
+			cnx.commit();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		cnx.close();
+	}
+}	
+	
 	
 
-}
+

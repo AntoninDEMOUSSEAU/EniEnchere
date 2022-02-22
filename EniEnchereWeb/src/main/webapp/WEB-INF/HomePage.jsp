@@ -13,14 +13,8 @@
 </head>
 <body>
 
-    <div class="container">
-        <div class="row">
-            <div class="col-12 mt-5">
-                <h1 class="title">ENI-Enchères</h1>
-                <a href="<%= request.getContextPath() %>/RegisterServlet">S'inscrire</a> - <a href="<%= request.getContextPath() %>/RegisterServlet">Se connecter</a>
-            </div>
-        </div>
-       
+<%@ include file="Header.jsp" %>
+
 		<c:if test='${not empty sessionScope["idUtilisateur"]}'>
         <div class="row">
             <h2>Filtres : </h2>		
@@ -69,14 +63,18 @@
 			</div>
 		</div>
 		</c:if>
-            <div class="mb-3 row">
+		
+		<form action="" method="post">
+			            <div class="mb-3 row">
                 <label for="categories" class="col-sm-2 col-form-label">Catégories</label>
+              
                		
                 <div class="col-sm-10">
-                    <select class="form-select" aria-label="Default select example">                        
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
+                    <select class="form-select" name="categorie" aria-label="Default select example">                        
+                        <c:forEach items="${listeCategorie }" var="categorie">
+                        	<option value="${categorie.getNoCategorie()}">${categorie.getLibelle()}</option>
+                        </c:forEach>
+                        
                       </select>
                 </div>
               </div>
@@ -86,6 +84,8 @@
             </div>
 
             <button type="submit" class="btn btn-primary btn-lg mt-3">Rechercher</button>
+		</form>
+		
         </div>
 		<c:forEach items="${listeArticle}" var="article" >
 			<div class="row mt-3">
