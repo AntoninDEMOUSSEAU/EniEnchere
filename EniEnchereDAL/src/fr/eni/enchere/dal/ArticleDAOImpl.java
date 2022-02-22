@@ -14,7 +14,8 @@ import fr.eni.enchere.bo.Utilisateur;
 public class ArticleDAOImpl implements ArticleDAO{
 
 	private static final String INSERT_ARTICLE = "insert into ARTICLES_VENDUS(nom_article, description, date_debut_encheres, date_fin_encheres, prix_initial, prix_vente, no_utilisateur, no_categorie) values(?,?,?,?,?,?,?,?);";
-	private static final String SELECT_ALL = "select * from ARTICLES_VENDUS a, UTILISATEURS u, RETRAITS r where a.no_utilisateur = u.no_utilisateur AND a.no_article = r.no_article";
+	private static final String SELECT_ALL = "select * from ARTICLES_VENDUS a, UTILISATEURS u  where a.no_utilisateur = u.no_utilisateur ";
+	private static final String SELECT_BY_NAME_OR_CATEGORIE = "select * from ARTICLES_VENDUS a, UTILISATEURS u, RETRAITS r where a.no_utilisateur = u.no_utilisateur AND a.no_article = r.no_article OR no_categorie=? OR nom_article=?";
 	
 	@Override
 	public void insertArticle(Article article, int idUtilisateur, int idCategorie) throws DALException, SQLException {
@@ -81,9 +82,7 @@ public class ArticleDAOImpl implements ArticleDAO{
 					listeArticle.add(article);
 					
 			}
-			
-			
-			
+					
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -92,5 +91,54 @@ public class ArticleDAOImpl implements ArticleDAO{
 		
 		return listeArticle;
 	}
+
+	@Override
+	public List<Article> selectArticleByNameOrCategory(int noCategorie, String libelle) throws DALException, SQLException {
+		
+		List<Article> listeArticle = new ArrayList<Article>();
+				
+				Connection cnx = null;
+				
+				try {
+					cnx = JdbcTools.getConnection();
+					PreparedStatement pstmt = cnx.prepareStatement(SELECT_BY_NAME_OR_CATEGORIE);
+					pstmt.setInt(1, noCategorie);
+					pstmt.setString(2, libelle);
+					ResultSet rs = pstmt.executeQuery();
+				
+					
+					while(rs.next())
+					{
+							Utilisateur utilisateur = new Utilisateur();	
+							Article article = new Article ();
+							Retrait retrait = new Retrait();
+
+							article.setUtilisateur(utilisateur);
+							article.setNoArticle(rs.getInt("no_article"));
+							article.setRetrait(retrait);
+							article.setNomArticle(rs.getString("nom_article"));
+							article.setDateFinEncheres(rs.getString("date_fin_encheres"));
+							article.setPrixVente(rs.getString("prix_initial"));	
+							article.getUtilisateur().setPseudo(rs.getString("pseudo"));
+							article.getRetrait().setCodePostal(rs.getInt("code_postal"));
+							article.getRetrait().setNomRue(rs.getString("rue"));
+							article.getRetrait().setVille(rs.getString("ville"));
+							
+							listeArticle.add(article);
+							
+					}
+					
+					
+					
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				cnx.close();
+				
+				return listeArticle;
+			}
+			
+	
 
 }

@@ -37,4 +37,17 @@ public class ArticleManager {
 		return listeArticle;
 	}
 	
+	public List<Article> selectArticleByNameOrCategory(int noCategorie, String libelle) throws DALException, SQLException {
+
+		List<Article> listeArticle= new ArrayList<Article>();
+		try {
+			 listeArticle=this.articleDao.selectArticleByNameOrCategory(noCategorie, libelle);
+		} catch (DALException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return listeArticle;
+	}
 }
