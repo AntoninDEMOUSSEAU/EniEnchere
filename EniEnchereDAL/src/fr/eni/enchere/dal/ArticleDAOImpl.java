@@ -15,8 +15,9 @@ public class ArticleDAOImpl implements ArticleDAO{
 
 	private static final String INSERT_ARTICLE = "insert into ARTICLES_VENDUS(nom_article, description, date_debut_encheres, date_fin_encheres, prix_initial, prix_vente, no_utilisateur, no_categorie) values(?,?,?,?,?,?,?,?);";
 	private static final String SELECT_ALL = "select * from ARTICLES_VENDUS a, UTILISATEURS u  where a.no_utilisateur = u.no_utilisateur ";
-	private static final String SELECT_BY_NAME_OR_CATEGORIE = "select * from ARTICLES_VENDUS a, UTILISATEURS u, RETRAITS r where a.no_utilisateur = u.no_utilisateur AND a.no_article = r.no_article OR no_categorie=? OR nom_article=?";
-	
+	private static final String SELECT_BY_CATEGORIE = "select * from ARTICLES_VENDUS a LEFT OUTER JOIN RETRAITS ON (a.no_article = RETRAITS.no_article), UTILISATEURS u where a.no_utilisateur = u.no_utilisateur AND a.no_categorie=?";
+	private static final String SELECT_BY_NAME= "select * from ARTICLES_VENDUS a LEFT OUTER JOIN RETRAITS ON (a.no_article = RETRAITS.no_article), UTILISATEURS u where a.no_utilisateur = u.no_utilisateur AND a.nom_article LIKE ?";
+
 	@Override
 	public void insertArticle(Article article, int idUtilisateur, int idCategorie) throws DALException, SQLException {
 		
@@ -93,24 +94,23 @@ public class ArticleDAOImpl implements ArticleDAO{
 	}
 
 	@Override
-	public List<Article> selectArticleByNameOrCategory(int noCategorie, String libelle) throws DALException, SQLException {
-		
-		List<Article> listeArticle = new ArrayList<Article>();
-				
+	public List<Article> selectArticleByCategory(int noCategorie) throws DALException, SQLException {				
 				Connection cnx = null;
+				List<Article> listeArticle = new ArrayList<Article>();
 				
 				try {
 					cnx = JdbcTools.getConnection();
-					PreparedStatement pstmt = cnx.prepareStatement(SELECT_BY_NAME_OR_CATEGORIE);
+					PreparedStatement pstmt = cnx.prepareStatement(SELECT_BY_CATEGORIE);
 					pstmt.setInt(1, noCategorie);
-					pstmt.setString(2, libelle);
 					ResultSet rs = pstmt.executeQuery();
 				
 					
 					while(rs.next())
 					{
-							Utilisateur utilisateur = new Utilisateur();	
 							Article article = new Article ();
+						
+							Utilisateur utilisateur = new Utilisateur();	
+							
 							Retrait retrait = new Retrait();
 
 							article.setUtilisateur(utilisateur);
@@ -126,6 +126,7 @@ public class ArticleDAOImpl implements ArticleDAO{
 							
 							listeArticle.add(article);
 							
+							
 					}
 					
 					
@@ -139,6 +140,53 @@ public class ArticleDAOImpl implements ArticleDAO{
 				return listeArticle;
 			}
 			
+	
+	@Override
+	public List<Article> selectArticleByName(String libelle) throws DALException, SQLException {				
+				Connection cnx = null;
+				List<Article> listeArticle = new ArrayList<Article>();
+				
+				try {
+					cnx = JdbcTools.getConnection();
+					PreparedStatement pstmt = cnx.prepareStatement(SELECT_BY_NAME);
+					pstmt.setString(1, "%" + libelle + "%");
+					ResultSet rs = pstmt.executeQuery();
+				
+					
+					while(rs.next())
+					{
+							Article article = new Article ();
+						
+							Utilisateur utilisateur = new Utilisateur();	
+							
+							Retrait retrait = new Retrait();
+
+							article.setUtilisateur(utilisateur);
+							article.setNoArticle(rs.getInt("no_article"));
+							article.setRetrait(retrait);
+							article.setNomArticle(rs.getString("nom_article"));
+							article.setDateFinEncheres(rs.getString("date_fin_encheres"));
+							article.setPrixVente(rs.getString("prix_initial"));	
+							article.getUtilisateur().setPseudo(rs.getString("pseudo"));
+							article.getRetrait().setCodePostal(rs.getInt("code_postal"));
+							article.getRetrait().setNomRue(rs.getString("rue"));
+							article.getRetrait().setVille(rs.getString("ville"));
+							
+							listeArticle.add(article);
+							
+							
+					}
+					
+					
+					
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				cnx.close();
+				
+				return listeArticle;
+			}
 	
 
 }

@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,7 +18,7 @@
 		<label for="categories" class="col-sm-2 col-form-label">Article : </label>
         <input type="text" class="form-control" name="article" placeholder="Le nom de l'article">
     </div>
-	<label for="categories" class="col-sm-2 col-form-label">Catégories</label>
+	<label for="categories" class="col-sm-2 col-form-label">CatÃ©gories</label>
 	    <div class="col-sm-10">
 	        <select class="form-select" aria-label="Default select example" name="nocategorie">
 	            <option selected>Toutes</option>
@@ -42,11 +42,11 @@
 	<div class="col-sm-10">
 		<input type="number" value="150" name="prixinitial">        
 	</div>
-	<label for="prixinitial" class="col-sm-2 col-form-label">Début de l'enchère : </label>
+	<label for="prixinitial" class="col-sm-2 col-form-label">DÃ©but de l'enchÃ¨re : </label>
 	<div class="col-sm-10">
 		<input type="date" name="debutenchere">        
 	</div>
-	<label for="prixinitial" class="col-sm-2 col-form-label">Fin de l'enchère : </label>
+	<label for="prixinitial" class="col-sm-2 col-form-label">Fin de l'enchÃ¨re : </label>
 	<div class="col-sm-10">
 		<input type="date" name="finenchere">        
 	</div>	

@@ -38,11 +38,27 @@ public class ArticleManager {
 		return listeArticle;
 	}
 	
-	public List<Article> selectArticleByNameOrCategory(int noCategorie, String libelle) throws DALException, SQLException {
+	public List<Article> selectArticleByCategory(int noCategorie) throws DALException, SQLException {
 
-		List<Article> listeArticle= new ArrayList<Article>();
+		List<Article> listeArticle = null;
+		
 		try {
-			 listeArticle=this.articleDao.selectArticleByNameOrCategory(noCategorie, libelle);
+			 listeArticle = this.articleDao.selectArticleByCategory(noCategorie);
+		} catch (DALException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return listeArticle;
+	}
+	
+	public List<Article> selectArticleByName(String libelle) throws DALException, SQLException {
+
+		List<Article> listeArticle = null;
+		
+		try {
+			 listeArticle = this.articleDao.selectArticleByName(libelle);
 		} catch (DALException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {

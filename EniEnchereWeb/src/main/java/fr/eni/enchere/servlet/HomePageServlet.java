@@ -37,17 +37,17 @@ public class HomePageServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		List<Article> listeArticle = new ArrayList<Article>();
+//		List<Article> listeArticle = new ArrayList<Article>();
 		List<Categorie> listeCategorie = new ArrayList<Categorie>();
-		ArticleManager am = new ArticleManager();
+//		ArticleManager am = new ArticleManager();
 		CategorieManager cm = new CategorieManager();
 		
 		try {
 			
-			listeArticle = am.selectArticle();
+//			listeArticle = am.selectArticle();
 			listeCategorie = cm.selectCategorie();
 		
-			request.setAttribute("listeArticle", listeArticle);
+//			request.setAttribute("listeArticle", listeArticle);
 			request.setAttribute("listeCategorie", listeCategorie);        
 			
 		} catch (DALException e) {
@@ -64,21 +64,43 @@ public class HomePageServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		List<Article> listeArticle = new ArrayList<Article>();
+		List<Article> listeArticle = null;
 		ArticleManager am = new ArticleManager();
 		
 		int noCategorie = Integer.parseInt(request.getParameter("categorie"));
-		String recherche = request.getParameter("rechercher");
+		String libelle = request.getParameter("rechercher");
 		
-		try {
+		System.out.println(request.getParameter("rechercher"));
+		
+		if (request.getParameter("rechercher") != "") {
+			try {
+				listeArticle = am.selectArticleByName(libelle);
+			} catch (DALException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			
-			System.out.println(listeArticle = am.selectArticleByNameOrCategory(noCategorie, recherche));
+			System.out.println(listeArticle);
 			
 			request.setAttribute("listeArticle", listeArticle);
-			
-		} catch (DALException | SQLException e) {
-			e.printStackTrace();
+		} else {
+			try {
+				
+				listeArticle = am.selectArticleByCategory(noCategorie);
+							
+				System.out.println(listeArticle);
+				
+				request.setAttribute("listeArticle", listeArticle);
+				
+			} catch (DALException | SQLException e) {
+				e.printStackTrace();
+			}
 		}
+		
+		
 		
 		doGet(request, response);
 	}
