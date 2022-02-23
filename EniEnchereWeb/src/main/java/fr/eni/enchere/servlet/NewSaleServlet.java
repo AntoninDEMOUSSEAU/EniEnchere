@@ -1,7 +1,8 @@
 package fr.eni.enchere.servlet;
 
 import java.io.IOException;
-
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,7 +12,10 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import fr.eni.enchere.bll.ArticleManager;
+import fr.eni.enchere.bll.CategorieManager;
 import fr.eni.enchere.bo.Article;
+import fr.eni.enchere.bo.Categorie;
+import fr.eni.enchere.dal.DALException;
 
 /**
  * Servlet implementation class NewSaleServlet
@@ -32,9 +36,28 @@ public class NewSaleServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+//		List<Article> listeArticle = new ArrayList<Article>();
+		List<Categorie> listeCategorie = new ArrayList<Categorie>();
+//		ArticleManager am = new ArticleManager();
+		CategorieManager cm = new CategorieManager();
+		
+		try {
+			
+//			listeArticle = am.selectArticle();
+			listeCategorie = cm.selectCategorie();
+		
+//			request.setAttribute("listeArticle", listeArticle);
+			request.setAttribute("listeCategorie", listeCategorie);        
+			
+		} catch (DALException e) {
+			e.printStackTrace();
+		}
+		
+		
+		
 		getServletContext().getRequestDispatcher("/WEB-INF/NewSale.jsp").forward(request, response);
 	}
+	
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
@@ -52,7 +75,7 @@ public class NewSaleServlet extends HttpServlet {
 		
 		Integer idUtilisateur = (Integer) session.getAttribute("idUtilisateur");
 		
-		int idCategorie = 2;
+		int idCategorie = noCategorie;
 		
 		Article newArticle = new Article(article ,description,debutEnchere,finEnchere,prixInitial);
 		
