@@ -15,6 +15,7 @@
 
 <%@ include file="Header.jsp" %>
 
+	<div class="container">
 		<c:if test='${not empty sessionScope["idUtilisateur"]}'>
         <div class="row">
             <h2>Filtres : </h2>		
@@ -110,5 +111,6 @@
 		        </div>
 		</c:forEach>
 	  </div>      
+	</div>
 </body>
 </html>
