@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="fr.eni.enchere.bo.*" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>  
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,22 +13,30 @@
 
 <%@ include file="Header.jsp" %>
 
-
+<div class="container">
 	<h2>Nouvelle vente</h2>
 	<form action="" method="post">
 	<div class="form-group">
 		<label for="categories" class="col-sm-2 col-form-label">Article : </label>
         <input type="text" class="form-control" name="article" placeholder="Le nom de l'article">
     </div>
-	<label for="categories" class="col-sm-2 col-form-label">Catégories</label>
-	    <div class="col-sm-10">
-	        <select class="form-select" aria-label="Default select example" name="nocategorie">
-	            <option selected>Toutes</option>
-	            <option value="1">One</option>
-	            <option value="2">Two</option>
-	            <option value="3">Three</option>
-	          </select>
-	    </div>
+    
+    
+
+			          
+     <label for="categories" class="col-sm-2 col-form-label">Catégories</label>
+         
+         <div class="col-sm-10">
+             <select class="form-select" name="nocategorie" aria-label="Default select example">                        
+                 <c:forEach items="${listeCategorie }" var="categorie">
+                 	<option value="${categorie.getNoCategorie()}">${categorie.getLibelle()}</option>
+                 </c:forEach>
+             </select>
+   		</div>
+
+	    
+	    
+	    
 	<div class="mb-3">
 	  <label for="exampleFormControlTextarea1" class="form-label">Description</label>
 	  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="description"></textarea>
@@ -50,16 +60,14 @@
 	<div class="col-sm-10">
 		<input type="date" name="finenchere">        
 	</div>	
-	<div class="container">
-  	<div class="row align-items-start">
+
 	    <div class="col">
 	      Retrait :
 	    </div>
 	    <div class="col">
 	      5 rue des Pinsons, 44000 Nantes
 	    </div>
-	</div>
-	<div>
+	
 		<button type="submit" class="btn btn-primary">Enregistrer</button>
 		<button type="submit" class="btn btn-primary">Annuler</button>
 	</div>  

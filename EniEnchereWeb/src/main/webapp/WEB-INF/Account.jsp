@@ -14,7 +14,7 @@
 <body>
 
 <%@ include file="Header.jsp" %>
-
+<div class="container">
 <h1>${utilisateur.getPseudo()} </h1>
 	<form method="get"  action="${pageContext.request.contextPath}/ModifyAccountPage">
 			<div class="form-row row align-items-center">
@@ -65,5 +65,6 @@
 				
 				</div>
 	</form>
+</div>	
 </body>
 </html>

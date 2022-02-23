@@ -19,7 +19,10 @@
 				    <a class="nav-link active" href="<%= request.getContextPath() %>/AccountServlet">Mon Compte</a>
 				  </li>
 				    <li class="">
-				    <a class="nav-link active" href="<%= request.getContextPath() %>/NewSaleServlet">Mon Compte</a>
+				    <a class="nav-link active" href="<%= request.getContextPath() %>/NewSale">Vendre un article</a>
+				  </li>
+				   <li class="">
+				    <a class="nav-link active" href="<%= request.getContextPath() %>/SellerBid">Mes articles </a>
 				  </li>
 				</ul>
 			</div>

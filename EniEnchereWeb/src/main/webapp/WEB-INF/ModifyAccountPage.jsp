@@ -13,7 +13,7 @@
 <body>
 
 <%@ include file="Header.jsp" %>
-
+<div class="container">
 <h1> Modifier mon profil </h1>
 <form method="post"  action="${pageContext.request.contextPath}/ModifyAccountPage">
 		<div class="form-row row align-items-center">
@@ -84,5 +84,6 @@
 			</div>
 		</div>
 	</form>
+</div>	
 </body>
 </html>
