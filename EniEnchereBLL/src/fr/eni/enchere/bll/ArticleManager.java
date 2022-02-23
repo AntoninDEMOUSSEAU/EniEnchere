@@ -52,13 +52,14 @@ public class ArticleManager {
 		return listeArticle;
 	}
 	//Methode Antonin pour la gestion des enchere
-	public void encherir(Article article, Utilisateur utilisateur, int prix) {
-		// DAO SELECT USER
+	public boolean encherir(Article article, Utilisateur utilisateur, int prix) {
+		// DAO 1  SELECT USER récuperer l'ID de la session 
 		
-		// DAO SelectBestBid depuis la factory
+		// DAO 2  SelectBestBid depuis la factory
 		
-		// DAO InsertBid
+		// si les conditions sont ok DAO InsertBid
 		
+		return false;
 		
 		
 		
