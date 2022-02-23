@@ -18,6 +18,9 @@
 				  <li class="">
 				    <a class="nav-link active" href="<%= request.getContextPath() %>/AccountServlet">Mon Compte</a>
 				  </li>
+				    <li class="">
+				    <a class="nav-link active" href="<%= request.getContextPath() %>/NewSaleServlet">Mon Compte</a>
+				  </li>
 				</ul>
 			</div>
 		</c:when>
