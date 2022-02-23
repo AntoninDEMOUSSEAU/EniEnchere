@@ -12,6 +12,8 @@ public class Article {
 	private String etatVente;
 	private Utilisateur utilisateur;
 	private Retrait retrait;
+	private Categorie categorie;
+	private Enchere enchere;
 	
 	public Article() {
 		super();
@@ -106,6 +108,22 @@ public class Article {
 
 	public void setRetrait(Retrait retrait) {
 		this.retrait = retrait;
+	}
+
+	public Categorie getCategorie() {
+		return categorie;
+	}
+
+	public void setCategorie(Categorie categorie) {
+		this.categorie = categorie;
+	}
+
+	public Enchere getEnchere() {
+		return enchere;
+	}
+
+	public void setEnchere(Enchere enchere) {
+		this.enchere = enchere;
 	}
 	
 	

@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="fr.eni.enchere.bo.*" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>  
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,19 +19,19 @@
         <div class="row">
             <div class="col-12">
                 <h2 class="text-center">Détail vente</h2>
-                <h3>PC Gamer pour travailler</h3>
+                <h3>${article.getNomArticle()}</h3>
                 <img src="https://via.placeholder.com/500x200" alt="">
             </div>
         </div>
 
         <div class="row">
             <div class="col-12">
-                <p>Description : Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores eveniet quod adipisci ex aliquid repellendus!</p>
-                <p>Catégorie : Informatique</p>
-                <p>Meilleur offre : 210 pts par Bob</p>
-                <p>Mise à prix : 185 points</p>
-                <p>Retrait : 10 allée des alouettes 44800 Saint Herblain</p>
-                <p>Vendeur: jojo44</p>
+                <p>Description :${article.getDescription()}  </p>
+                <p>Catégorie :${article.getCategorie().getLibelle()} </p>
+                <p>Meilleur offre : ${article.getEnchere().getMontantEnchere()}</p>
+                <p>Mise à prix : ${article.getPrixVente()}</p>
+                <p>Retrait : ${article.getRetrait().getCodePostal()} ${article.getRetrait().getNomRue()} à ${article.getRetrait().getVille()}</p>
+                <p>Vendeur: ${article.getUtilisateur().getPseudo()}</p>
             </div>
         </div>
 
@@ -53,7 +55,7 @@
                   </div>
 
              
-                  <button type="submit" class="btn btn-primary">Back</button>
+                  <a href="<%=request.getContextPath()%>/HomePageServlet " class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Retour</a>
             </div>
         </div>
     </div>

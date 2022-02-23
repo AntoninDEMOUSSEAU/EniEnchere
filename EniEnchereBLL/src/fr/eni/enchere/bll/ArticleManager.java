@@ -67,6 +67,19 @@ public class ArticleManager {
 		
 		return listeArticle;
 	}
+	
+	public Article selectArticleById(int idArticle) {
+		Article article = new Article();
+		try {
+			article=this.articleDao.selectArticleById(idArticle);
+		} catch (DALException | SQLException e) {
+			e.printStackTrace();
+		}
+		return article;
+	}
+	
+	
+	
 	//Methode Antonin pour la gestion des enchere
 	public boolean encherir(Article article, Utilisateur utilisateur, int prix) {
 		// DAO 1  SELECT USER récuperer l'ID de la session 
