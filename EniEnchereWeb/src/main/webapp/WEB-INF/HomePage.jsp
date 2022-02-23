@@ -97,7 +97,7 @@
 		                      </div>
 		                      <div class="col-md-8">
 		                        <div class="card-body">
-		                         <h5 class="card-title"><a href="<%= request.getContextPath() %>/BidDetail"> ${article.getNomArticle()}</a></h5>
+		                         <h5 class="card-title"><a href="<%= request.getContextPath() %>/BidDetail?id=${article.getNoArticle()}"> ${article.getNomArticle()}</a></h5>
 		                          <p class="card-text">Prix de départ : ${article.getPrixVente()} €</p>
 		                          <p class="card-text">Date de fin d'enchère : ${article.getDateFinEncheres()}</p>
 		                          <p class="card-text">Adresse de retrait : ${article.getRetrait().getCodePostal()} ${article.getRetrait().getNomRue()} à ${article.getRetrait().getVille()}</p>
