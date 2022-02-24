@@ -47,13 +47,19 @@
                             <option value="3">250</option>
                         </select>
                     </div>
-
-                    <div class="col-2">
-                        <button type="submit" class="btn btn-primary">Enchérir</button>
-                    </div>
-    
+						<c:if test="${compareIdArticleUtilisateur==false}">
+	              			<div class="col-2">
+	                        <button type="submit" class="btn btn-primary">Enchérir</button>
+	                    	</div>
+	    				</c:if>
                   </div>
-
+                  
+						<c:if test="${compareIdArticleUtilisateur==true}">
+	                    <div class="col-2">
+	                        <a href="<%=request.getContextPath()%>/HomePageServlet " class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Modifier</a>
+	                        <a href="<%=request.getContextPath()%>/HomePageServlet " class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Annuler la vente</a>
+	                    </div>
+	    				</c:if>
              
                   <a href="<%=request.getContextPath()%>/HomePageServlet " class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Retour</a>
             </div>

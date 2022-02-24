@@ -38,7 +38,16 @@ public class BidDetail extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	
+		//Je récupere l'ID de l'article et de l'utilisateur depuis le formulaire et depuis la session
 		int idArticle  = Integer.parseInt(request.getParameter("id"));
+		HttpSession session = request.getSession();
+		int idUtilisateur= (int) session.getAttribute("idUtilisateur");
+		
+		//Je prepare ma variable qui me permettra de savoir si l'article appartient à l'utilisateur
+		boolean compareIdArticleUtilisateur = false;
+		
+		//Je setup mes infos
 		ArticleManager articleManager = new ArticleManager();
 		Article article = new Article();
 		Utilisateur utilisateur = new Utilisateur();
@@ -47,14 +56,26 @@ public class BidDetail extends HttpServlet {
 		Retrait retrait = new Retrait();
 		Categorie categorie = new Categorie();
 		
+		//Je récupere les infos de la table Utilisateur, Retrait, Enchere et Categorie
 		article.setUtilisateur(utilisateur);
 		article.setRetrait(retrait);
 		article.setEnchere(enchere);
 		article.setCategorie(categorie);
+		article.getUtilisateur().getNoUtilisateur();
 		
+		//Je selectionne l'ensemble des données liés à l'id de l'article.
 		article=articleManager.selectArticleById(idArticle);
+		int vendeur = article.getUtilisateur().getNoUtilisateur();
 		
+		//Je compare les informations du vendeur et de l'article pour envoyer une valeur boolean pour afficher ou non certaines infos dans la JSP.
+		
+		if( vendeur== idUtilisateur) {
+			compareIdArticleUtilisateur = true;
+		}
+		
+		//J'envoi les informations à ma JSP
 		request.setAttribute("article", article);
+		request.setAttribute("compareIdArticleUtilisateur", compareIdArticleUtilisateur);
 		
 		if (session.getAttribute("idUtilisateur") != null) {
 			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/BidDetail.jsp");
