@@ -7,6 +7,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import fr.eni.enchere.bll.ArticleManager;
 import fr.eni.enchere.bo.Article;
@@ -41,6 +42,7 @@ public class BidDetail extends HttpServlet {
 		ArticleManager articleManager = new ArticleManager();
 		Article article = new Article();
 		Utilisateur utilisateur = new Utilisateur();
+		HttpSession session = request.getSession();
 		Enchere enchere = new Enchere();
 		Retrait retrait = new Retrait();
 		Categorie categorie = new Categorie();
@@ -54,8 +56,15 @@ public class BidDetail extends HttpServlet {
 		
 		request.setAttribute("article", article);
 		
-		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/BidDetail.jsp");
-		rd.forward(request, response);
+		if (session.getAttribute("idUtilisateur") != null) {
+			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/BidDetail.jsp");
+			rd.forward(request, response);
+		} else {
+			getServletContext().getRequestDispatcher("/WEB-INF/LoginPage.jsp").forward(request, response);
+		}
+		
+		
+		
 	}
 		
 
