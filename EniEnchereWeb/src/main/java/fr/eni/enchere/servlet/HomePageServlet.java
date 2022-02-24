@@ -50,7 +50,7 @@ public class HomePageServlet extends HttpServlet {
 //			request.setAttribute("listeArticle", listeArticle);
 			request.setAttribute("listeCategorie", listeCategorie);        
 			
-		} catch (DALException e) {
+		} catch (DALException e) {  
 			e.printStackTrace();
 		}
 		

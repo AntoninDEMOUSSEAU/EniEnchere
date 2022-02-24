@@ -17,7 +17,6 @@ public class Enchere {
 		super();
 		this.dateEnchere = dateEnchere;
 		this.montantEnchere = montantEnchere;
-		this.utilisateur = utilisateur; 
 		this.montantEnchere=montantEnchere;
 	}
 	
