@@ -17,8 +17,8 @@ public abstract class DAOFactory {
 		return new CategorieDAOImpl();
 	}
 	
-	public static EnchereDAO getEnchereDAO() {
-		return new EnchereDAOImpl();
+	public static EncherirDAO getEnchereDAO() {
+		return new EncherirDAOImpl();
 	}
 }
 	

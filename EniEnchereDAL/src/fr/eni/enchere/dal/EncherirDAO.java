@@ -8,7 +8,7 @@ import fr.eni.enchere.bo.Utilisateur;
 
 public interface EncherirDAO {
 
-	public Enchere selectMeilleurEnchere(Article article) throws DALException, SQLException;
+	public Enchere selectMeilleurEnchere(String article) throws DALException, SQLException;
 	public Utilisateur selectUserConnected (int id) throws DALException, SQLException;
-	public void encherir (Article article, Utilisateur utilisateur, String date  ,int prix ) throws DALException, SQLException;
+	public void encherir (Article article, Utilisateur utilisateur, int prix) throws DALException, SQLException;
 }

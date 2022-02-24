@@ -16,7 +16,11 @@ public class Article {
 	private Enchere enchere;
 	
 	public Article() {
-		super();
+		
+	}
+	
+	public Article(int noArticle) {
+		this.noArticle = noArticle;
 	}
 	
 	public Article(String nomArticle, String description, String datedebutEncheres, String dateFinEncheres, int miseAPrix)

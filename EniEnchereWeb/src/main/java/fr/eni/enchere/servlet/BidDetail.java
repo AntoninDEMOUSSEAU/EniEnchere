@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import fr.eni.enchere.bll.ArticleManager;
+import fr.eni.enchere.bll.EncherirManager;
 import fr.eni.enchere.bo.Article;
 import fr.eni.enchere.bo.Categorie;
 import fr.eni.enchere.bo.Enchere;
@@ -51,7 +52,7 @@ public class BidDetail extends HttpServlet {
 		ArticleManager articleManager = new ArticleManager();
 		Article article = new Article();
 		Utilisateur utilisateur = new Utilisateur();
-		HttpSession session = request.getSession();
+		session = request.getSession();
 		Enchere enchere = new Enchere();
 		Retrait retrait = new Retrait();
 		Categorie categorie = new Categorie();
@@ -93,6 +94,24 @@ public class BidDetail extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		//HttpSession session = request.get
+		
+		EncherirManager manager = new EncherirManager();
+		
+		Enchere enchere = new Enchere();
+				
+		Article article = new Article(Integer.parseInt(request.getParameter("id")));
+		
+		Utilisateur utilisateur = new Utilisateur();
+		utilisateur.setNoUtilisateur((int) request.getSession().getAttribute("idUtilisateur"));
+		
+		int prix = Integer.parseInt(request.getParameter("prix"));
+		
+		
+		manager.encherir(article, utilisateur, prix);
+		
+		response.sendRedirect(request.getContextPath() + "/BidDetail?id=" + article.getNoArticle());
 	}
 
 }
