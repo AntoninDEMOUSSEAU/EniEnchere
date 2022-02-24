@@ -221,6 +221,7 @@ public class ArticleDAOImpl implements ArticleDAO{
 				article.getRetrait().setNomRue(rs.getString("rue"));
 				article.getRetrait().setVille(rs.getString("ville"));
 				article.getUtilisateur().setPseudo(rs.getString("pseudo"));
+				article.getUtilisateur().setNoUtilisateur(rs.getInt("no_utilisateur"));
 				article.getCategorie().setLibelle(rs.getString("libelle"));
 				article.getEnchere().setMontantEnchere(rs.getInt("montant_enchere"));
 			}	
