@@ -52,6 +52,7 @@ public class ArticleDAOImpl implements ArticleDAO{
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		
 		cnx.close();
 		
 	}

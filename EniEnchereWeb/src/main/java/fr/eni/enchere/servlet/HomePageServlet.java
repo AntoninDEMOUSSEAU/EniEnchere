@@ -72,6 +72,8 @@ public class HomePageServlet extends HttpServlet {
 		
 		System.out.println(request.getParameter("rechercher"));
 		
+		
+		
 		if (request.getParameter("rechercher") != "") {
 			try {
 				listeArticle = am.selectArticleByName(libelle);
