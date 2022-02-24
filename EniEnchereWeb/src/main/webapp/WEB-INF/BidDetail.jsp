@@ -34,7 +34,7 @@
                 <p>Vendeur: ${article.getUtilisateur().getPseudo()}</p>
             </div>
         </div>
-
+			<c:if test="${compareIdArticleUtilisateur==false}">
         <div class="row">
             <div class="col-12">
                 <div class="mb-3 row">
@@ -47,7 +47,7 @@
                             <option value="3">250</option>
                         </select>
                     </div>
-						<c:if test="${compareIdArticleUtilisateur==false}">
+					
 	              			<div class="col-2">
 	                        <button type="submit" class="btn btn-primary">Enchérir</button>
 	                    	</div>
@@ -56,7 +56,8 @@
                   
 						<c:if test="${compareIdArticleUtilisateur==true}">
 	                    <div class="col-2">
-	                        <a href="<%=request.getContextPath()%>/HomePageServlet " class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Modifier</a>
+	                  
+	                        <a href="<%=request.getContextPath()%>/ModifyBidServlet?id=${article.getNoArticle() } " class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Modifier</a>
 	                        <a href="<%=request.getContextPath()%>/HomePageServlet " class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Annuler la vente</a>
 	                    </div>
 	    				</c:if>

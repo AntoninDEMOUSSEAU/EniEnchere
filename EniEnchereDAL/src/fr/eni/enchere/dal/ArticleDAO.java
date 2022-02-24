@@ -11,4 +11,5 @@ public interface ArticleDAO {
 	public List<Article> selectArticleByCategory(int noCategorie) throws DALException, SQLException;
 	public List<Article> selectArticleByName(String libelle) throws DALException, SQLException;
 	public Article selectArticleById(int idArticle) throws DALException, SQLException;
+	public List<Article> selectArticleByUser(int idUtilisateur) throws DALException,SQLException;
 }

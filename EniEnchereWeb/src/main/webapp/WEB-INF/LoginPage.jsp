@@ -14,9 +14,9 @@
 <title>Page de connection</title>
 </head>
 <body>
-	
+	<%@ include file="Header.jsp" %>
 	<!------ Include the above in your HEAD tag ---------->
-	
+<div class="container"> 
 	<div class="wrapper fadeInDown">
 	  <div id="formContent">
 	    <!-- Tabs Titles -->
@@ -41,6 +41,7 @@
 	  </div>
 	  
 	 <c:set var="ErrorLogin" value="" scope="session" />
+</div>
 </div>
 </body>
 </html>

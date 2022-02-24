@@ -85,7 +85,6 @@ public class HomePageServlet extends HttpServlet {
 				e.printStackTrace();
 			}
 			
-			System.out.println(listeArticle);
 			
 			request.setAttribute("listeArticle", listeArticle);
 		} else {
@@ -93,7 +92,7 @@ public class HomePageServlet extends HttpServlet {
 				
 				listeArticle = am.selectArticleByCategory(noCategorie);
 							
-				System.out.println(listeArticle);
+				
 				
 				request.setAttribute("listeArticle", listeArticle);
 				

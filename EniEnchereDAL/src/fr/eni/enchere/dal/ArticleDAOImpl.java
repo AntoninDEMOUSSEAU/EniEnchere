@@ -20,7 +20,8 @@ public class ArticleDAOImpl implements ArticleDAO{
 	private static final String SELECT_BY_CATEGORIE = "select * from ARTICLES_VENDUS a LEFT OUTER JOIN RETRAITS ON (a.no_article = RETRAITS.no_article), UTILISATEURS u where a.no_utilisateur = u.no_utilisateur AND a.no_categorie=?";
 	private static final String SELECT_BY_NAME= "select * from ARTICLES_VENDUS a LEFT OUTER JOIN RETRAITS ON (a.no_article = RETRAITS.no_article), UTILISATEURS u where a.no_utilisateur = u.no_utilisateur AND a.nom_article LIKE ?";
 	private static final String SELECT_ARTICLE_BY_ID = "SELECT * FROM ARTICLES_VENDUS a LEFT OUTER JOIN RETRAITS r ON a.no_article=r.no_article LEFT OUTER JOIN UTILISATEURS u ON a.no_utilisateur=u.no_utilisateur LEFT OUTER JOIN ENCHERES e ON a.no_article=e.no_article LEFT OUTER JOIN CATEGORIES c ON a.no_categorie=c.no_categorie WHERE a.no_article=?";
-	
+	private static final String SELECT_ARTICLE_BY_USER = "SELECT * FROM ARTICLES_VENDUS a LEFT OUTER JOIN RETRAITS r ON a.no_article=r.no_article LEFT OUTER JOIN UTILISATEURS u ON a.no_utilisateur=u.no_utilisateur LEFT OUTER JOIN ENCHERES e ON a.no_article=e.no_article LEFT OUTER JOIN CATEGORIES c ON a.no_categorie=c.no_categorie WHERE u.no_utilisateur=?";
+
 	@Override
 	public void insertArticle(Article article, int idUtilisateur, int idCategorie) throws DALException, SQLException {
 		
@@ -214,7 +215,9 @@ public class ArticleDAOImpl implements ArticleDAO{
 			ResultSet rs = pstmt.executeQuery();
 			while(rs.next())
 			{
+				
 				article.setNomArticle(rs.getString("nom_article"));
+				article.setNoArticle(rs.getInt("no_article"));
 				article.setDescription(rs.getString("description"));
 				article.setDateFinEncheres(rs.getString("date_fin_encheres"));
 				article.setPrixVente(rs.getString("prix_initial"));	
@@ -230,6 +233,56 @@ public class ArticleDAOImpl implements ArticleDAO{
 		cnx.close();
 		return article;
 	}
+
+	@Override
+	public List<Article> selectArticleByUser(int idUtilisateur) throws DALException, SQLException {
+		Connection cnx = null;
+		List<Article> listeArticleByUser = new ArrayList<Article>();
+		
+		try {
+			cnx = JdbcTools.getConnection();
+			PreparedStatement pstmt = cnx.prepareStatement(SELECT_ARTICLE_BY_USER);
+			pstmt.setInt(1,idUtilisateur);
+			ResultSet rs = pstmt.executeQuery();
+		
+			
+			while(rs.next())
+			{
+				Article article = new Article();
+				Retrait retrait = new Retrait();
+				Categorie categorie = new Categorie();
+				Utilisateur utilisateur=new Utilisateur();
+				Enchere enchere = new Enchere();
+				
+				article.setUtilisateur(utilisateur);
+				article.setCategorie(categorie);
+				article.setEnchere(enchere);
+				article.setRetrait(retrait);
+				article.setNomArticle(rs.getString("nom_article"));
+				article.setNoArticle(rs.getInt("no_article"));
+				article.setDescription(rs.getString("description"));
+				article.setDateFinEncheres(rs.getString("date_fin_encheres"));
+				article.setPrixVente(rs.getString("prix_initial"));	
+				article.getRetrait().setCodePostal(rs.getInt("code_postal"));
+				article.getRetrait().setNomRue(rs.getString("rue"));
+				article.getRetrait().setVille(rs.getString("ville"));
+				article.getUtilisateur().setPseudo(rs.getString("pseudo"));
+				article.getCategorie().setLibelle(rs.getString("libelle"));
+				article.getEnchere().setMontantEnchere(rs.getInt("montant_enchere"));
+				
+				listeArticleByUser.add(article);
+					
+					
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		cnx.close();
+		
+		return listeArticleByUser;
+	}		
 }
 	
 			

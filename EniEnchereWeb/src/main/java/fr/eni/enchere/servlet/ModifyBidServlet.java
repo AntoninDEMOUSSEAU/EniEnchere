@@ -1,6 +1,9 @@
 package fr.eni.enchere.servlet;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,43 +13,32 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import fr.eni.enchere.bll.ArticleManager;
-import fr.eni.enchere.bll.utils.FonctionsMetiers;
+import fr.eni.enchere.bll.CategorieManager;
+import fr.eni.enchere.bll.UtilisateurManager;
 import fr.eni.enchere.bo.Article;
 import fr.eni.enchere.bo.Categorie;
 import fr.eni.enchere.bo.Enchere;
 import fr.eni.enchere.bo.Retrait;
 import fr.eni.enchere.bo.Utilisateur;
+import fr.eni.enchere.dal.DALException;
 
 /**
- * Servlet implementation class BidDetail
+ * Servlet implementation class ModifyBidServlet
  */
-
-
-@WebServlet("/BidDetail")
-
-public class BidDetail extends HttpServlet {
+@WebServlet("/ModifyBidServlet")
+public class ModifyBidServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public BidDetail() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
-
+ 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
-		//Je récupere l'ID de l'article et de l'utilisateur depuis le formulaire et depuis la session
 		int idArticle  = Integer.parseInt(request.getParameter("id"));
-		HttpSession session = request.getSession();
-		int idUtilisateur= (int) session.getAttribute("idUtilisateur");
-		
+		List<Categorie> listeCategorie = new ArrayList<Categorie>();
 			//Je setup mes infos
 		ArticleManager articleManager = new ArticleManager();
+		CategorieManager cm = new CategorieManager();
 		Article article = new Article();
 		Utilisateur utilisateur = new Utilisateur();
 		Enchere enchere = new Enchere();
@@ -61,33 +53,45 @@ public class BidDetail extends HttpServlet {
 		article.getUtilisateur().getNoUtilisateur();
 		
 		//Je selectionne l'ensemble des données liés à l'id de l'article.
-		article=articleManager.selectArticleById(idArticle);
 		
-		//J'initialise ma variable qui me permettra de savoir si l'article appartient à l'utilisateur.
-		//VerifyIsVendeur compare l'id de l'utilisateur qui consulte le detail de l'article et l'id de l'utilisateur propriétaire de l'ID
-		boolean compareIdArticleUtilisateur = FonctionsMetiers.VerifyIsVendeur(article, idUtilisateur);
-		
-		
-		//J'envoi les informations à ma JSP
-		request.setAttribute("article", article);
-		request.setAttribute("compareIdArticleUtilisateur", compareIdArticleUtilisateur);
-		
-		if (session.getAttribute("idUtilisateur") != null) {
-			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/BidDetail.jsp");
-			rd.forward(request, response);
-		} else {
-			getServletContext().getRequestDispatcher("/WEB-INF/LoginPage.jsp").forward(request, response);
+		try {
+			article=articleManager.selectArticleById(idArticle);
+			listeCategorie = cm.selectCategorie();
+		} catch (DALException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		
-		
-		
+		//		
+		request.setAttribute("listeCategorie", listeCategorie);   
+		request.setAttribute("article", article);
+			
+		RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/ModifyBid.jsp");
+		rd.forward(request, response);
 	}
-		
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		ArticleManager articleManager = new ArticleManager();
+		CategorieManager cm = new CategorieManager();
+		Article article = new Article();
+		Utilisateur utilisateur = new Utilisateur();
+		Enchere enchere = new Enchere();
+		Retrait retrait = new Retrait();
+		Categorie categorie = new Categorie();
+		
+		
+		article.setNomArticle(request.getParameter("nomArticle"));
+		categorie.setNoCategorie(Integer.parseInt( request.getParameter("nocategorie")));
+		article.setDescription(request.getParameter("description"));
+		article.setDescription(request.getParameter("prixinitial"));
+		article.setDescription(request.getParameter("debutenchere"));
+		article.setDescription(request.getParameter("finenchere"));
+		articleManager.updateArticle();
+		
+		response.sendRedirect(request.getContextPath() + "/");
 	}
 
 }
