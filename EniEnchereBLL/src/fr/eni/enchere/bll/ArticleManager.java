@@ -88,10 +88,9 @@ public class ArticleManager {
 		return listeArticleByUser;
 	}
 
-	public Article updateArticleById(int idArticle) {
-		Article article = null;
+	public Article updateArticleById(int idArticle, Article article) {
 		try {
-			article=this.articleDao.updateArticleById(idArticle);
+			article=this.articleDao.updateArticleById(idArticle, article);
 		} catch (DALException | SQLException e) {
 			e.printStackTrace();
 		}

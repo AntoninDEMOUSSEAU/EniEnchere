@@ -85,10 +85,10 @@ public class ModifyBidServlet extends HttpServlet {
 		article.setNomArticle(request.getParameter("nomArticle"));
 		categorie.setNoCategorie(Integer.parseInt( request.getParameter("nocategorie")));
 		article.setDescription(request.getParameter("description"));
-		article.setDescription(request.getParameter("prixinitial"));
-		article.setDescription(request.getParameter("debutenchere"));
-		article.setDescription(request.getParameter("finenchere"));
-		articleManager.updateArticleById(idArticle);
+		article.setPrixVente(request.getParameter("prixinitial"));
+		article.setDatedebutEncheres(request.getParameter("debutenchere"));
+		article.setDateFinEncheres(request.getParameter("finenchere"));
+		articleManager.updateArticleById(idArticle, article);
 		
 		response.sendRedirect(request.getContextPath() + "/MesArticles");
 	}

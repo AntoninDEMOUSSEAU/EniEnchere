@@ -35,34 +35,34 @@
             </div>
         </div>
 			<c:if test="${compareIdArticleUtilisateur==false}">
-        <div class="row">
-            <div class="col-12">
-                <div class="mb-3 row">
-                    <form action="<%= request.getContextPath() %>/BidDetail?id=${param.id}" method="post">
-	                    	<label for="categories" class="col-4 col-form-label">Ma proposition</label>
-	                    <div class="col-4">
-	                        <input type="text" name="prix" placeholder="prix" class="form-control">
-	                    </div>
-							<c:if test="${compareIdArticleUtilisateur==false}">
-		              			<div class="col-2">
-		                        <button type="submit" class="btn btn-primary">Enchérir</button>
-		                    	</div>
-		    				</c:if>
-	                  </div>
-                  
-                    </form>
-						<c:if test="${compareIdArticleUtilisateur==true}">
+		        <div class="row">
+		            <div class="col-12">
+		                <div class="mb-3 row">
+		                    <form action="<%= request.getContextPath() %>/BidDetail?id=${param.id}" method="post">
+			                    <label for="categories" class="col-4 col-form-label">Ma proposition</label>
+						          	<div class="col-4">
+						                 <input type="text" name="prix" placeholder="prix" class="form-control">
+						           </div>
+		              				<div class="col-2">
+		                        		<button type="submit" class="btn btn-primary">Enchérir</button>
+		                    		</div>
+             			 	 </form>   
+              			 </div>
+                  	</div>
+	         
+	          </c:if>    			 
+                   
+					<c:if test="${compareIdArticleUtilisateur==true}">
 	                    <div class="col-2">
 	                  
 	                        <a href="<%=request.getContextPath()%>/ModifyBidServlet?id=${article.getNoArticle() } " class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Modifier</a>
 	                        <a href="<%=request.getContextPath()%>/HomePageServlet " class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Annuler la vente</a>
 	                    </div>
-	    				</c:if>
 	    			</c:if>
+	    			
              
                   <a href="<%=request.getContextPath()%>/HomePageServlet " class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Retour</a>
-            </div>
-        </div>
-    </div>
+           </div>
+	
 </body>
 </html>
