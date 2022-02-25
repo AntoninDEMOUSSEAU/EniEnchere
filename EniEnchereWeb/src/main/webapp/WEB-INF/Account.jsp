@@ -61,7 +61,7 @@
 			
 				<div class="form-row">
 					<button type="submit" class="btn btn-primary btn-lg active">Modifier</button>
-					<a href="<%=request.getContextPath()%>/HomePageServlet " class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Retour</a>
+					<a href="<%=request.getContextPath()%>/" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Retour</a>
 				
 				</div>
 	</form>

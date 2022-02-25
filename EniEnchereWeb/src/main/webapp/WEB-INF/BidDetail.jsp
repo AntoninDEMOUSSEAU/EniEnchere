@@ -58,6 +58,7 @@
 	                        <a href="<%=request.getContextPath()%>/HomePageServlet " class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Annuler la vente</a>
 	                    </div>
 	    				</c:if>
+	    			</c:if>
              
                   <a href="<%=request.getContextPath()%>/HomePageServlet " class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Retour</a>
             </div>

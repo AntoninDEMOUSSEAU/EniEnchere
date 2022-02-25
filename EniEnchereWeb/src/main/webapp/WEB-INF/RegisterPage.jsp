@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>  
 <!DOCTYPE html>
 
 <html>
@@ -11,8 +12,13 @@
 <title>Register Page</title>
 </head>
 <body>
-<h1> Créer un compte</h1>
+<%@ include file="Header.jsp" %>
+
+
+
+
 	<div class="container-sm-flex pt-5 mx-auto col-8  ">
+	<h1> Créer un compte</h1>
 		<form method="post" action="${pageContext.request.contextPath}/RegisterServlet" >
 				<div class="form-row row align-items-center">
 					<div class="">
