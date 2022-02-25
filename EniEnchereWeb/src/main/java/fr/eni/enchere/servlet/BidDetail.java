@@ -11,6 +11,7 @@ import javax.servlet.http.HttpSession;
 
 import fr.eni.enchere.bll.ArticleManager;
 import fr.eni.enchere.bll.EncherirManager;
+import fr.eni.enchere.bll.utils.FonctionsMetiers;
 import fr.eni.enchere.bo.Article;
 import fr.eni.enchere.bo.Categorie;
 import fr.eni.enchere.bo.Enchere;
