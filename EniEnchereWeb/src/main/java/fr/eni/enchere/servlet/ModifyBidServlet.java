@@ -74,12 +74,11 @@ public class ModifyBidServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		int idArticle  = Integer.parseInt(request.getParameter("id"));
+		
 		ArticleManager articleManager = new ArticleManager();
 		CategorieManager cm = new CategorieManager();
 		Article article = new Article();
-		Utilisateur utilisateur = new Utilisateur();
-		Enchere enchere = new Enchere();
-		Retrait retrait = new Retrait();
 		Categorie categorie = new Categorie();
 		
 		
@@ -89,9 +88,9 @@ public class ModifyBidServlet extends HttpServlet {
 		article.setDescription(request.getParameter("prixinitial"));
 		article.setDescription(request.getParameter("debutenchere"));
 		article.setDescription(request.getParameter("finenchere"));
-		articleManager.updateArticle();
+		articleManager.updateArticleById(idArticle);
 		
-		response.sendRedirect(request.getContextPath() + "/");
+		response.sendRedirect(request.getContextPath() + "/MesArticles");
 	}
 
 }
