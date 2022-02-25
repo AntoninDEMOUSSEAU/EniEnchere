@@ -17,57 +17,64 @@
 <%@ include file="Header.jsp" %>
 <div class="container">
 <h1> Modifier mon Enchere </h1>
-<form method="post"  action="${pageContext.request.contextPath}/ModifyBidServlet">
-		<div class="form-row row align-items-center">
-			<div class="">
-				<label>Nom Article </label> 
+<form method="post"  action="${pageContext.request.contextPath}/ModifyBidServlet?id=${article.getNoArticle()}">
+
+	<div class="form-row row align-items-center">
+		<div class="">
+			<label>Nom Article </label> 
 				<input type="text" class="form-control" name="nomArticle" value="${article.getNomArticle()}" >
 			</div>
 			
-			   <label for="categories" class="col-sm-2 col-form-label">Catégories</label>
-         
-         <div class="col-sm-10">
-             <select class="form-select" name="nocategorie" aria-label="Default select example">                        
-                 <c:forEach items="${listeCategorie}" var="categorie">
-                 	<option value="${categorie.getNoCategorie()}">${categorie.getLibelle()}</option>
-                 </c:forEach>
-             </select>
-   		</div>
-		<div class="mb-3">
-	  		<label for="exampleFormControlTextarea1" class="form-label">Description</label>
-	  		<textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="description" value="${article.getDescription()}"></textarea>
-		</div>
-		<div>
-		<label for="exampleFormControlTextarea1" class="form-label">Photo de l'article</label>
-		<button type="button" class="btn btn-primary">Uploader</button>
-	</div>
-	<div class="p-2">	
-		<img src="https://via.placeholder.com/250C/" class="img-fluid rounded-start" alt="...">		
-	</div>
-	<label for="prixinitial" class="col-sm-2 col-form-label">Prix initial : </label>
-	<div class="col-sm-10">
-		<input type="number" value="150" name="prixinitial" value="${article.getPrixVente()}">        
-	</div>
-	<label for="prixinitial" class="col-sm-2 col-form-label">Début de l'enchère : </label>
-	<div class="col-sm-10">
-		<input type="text" name="debutenchere" value="${article.getDatedebutEncheres()}">        
-	</div>
-	<label for="prixinitial" class="col-sm-2 col-form-label">Fin de l'enchère : </label>
-	<div class="col-sm-10">
-		<input type="text" name="finenchere" value="${article.getDateFinEncheres()}">        
-	</div>	
+			 <label for="categories" class="col-sm-2 col-form-label">Catégories</label>
+		         <div class="col-sm-10">
+		             <select class="form-select" name="nocategorie" aria-label="Default select example">                        
+		                 <c:forEach items="${listeCategorie}" var="categorie">
+		                 	<option value="${categorie.getNoCategorie()}">${categorie.getLibelle()}</option>
+		                 </c:forEach>
+		             </select>
+		   		</div>
+		   		
+				<div class="mb-3">
+			  		<label for="exampleFormControlTextarea1" class="form-label">Description</label>
+			  		<textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="description" value="${article.getDescription()}"></textarea>
+				</div>
+			
+				<div>
+					<label for="exampleFormControlTextarea1" class="form-label">Photo de l'article</label>
+					<button type="button" class="btn btn-primary">Uploader</button>
+				</div>
+				
+				<div class="p-2">	
+					<img src="https://via.placeholder.com/250C/" class="img-fluid rounded-start" alt="...">		
+				</div>
+				
+				<label for="prixinitial" class="col-sm-2 col-form-label">Prix initial : </label>
+				<div class="col-sm-10">
+					<input type="number" value="150" name="prixinitial" value="${article.getPrixVente()}">        
+				</div>
+				
+				<label for="prixinitial" class="col-sm-2 col-form-label">Début de l'enchère : </label>
+				<div class="col-sm-10">
+					<input type="text" name="debutenchere" value="${article.getDatedebutEncheres()}">        
+				</div>
+				
+				<label for="prixinitial" class="col-sm-2 col-form-label">Fin de l'enchère : </label>
+				<div class="col-sm-10">
+					<input type="text" name="finenchere" value="${article.getDateFinEncheres()}">        
+				</div>	
 
-	    <div class="col">
-	      Retrait :
-	    </div>
-	    <div class="col">
-	      5 rue des Pinsons, 44000 Nantes
-	    </div>
+			    <div class="col">
+			      Retrait :
+			    </div>
+			    <div class="col">
+			      5 rue des Pinsons, 44000 Nantes
+			    </div>
 	
-		<button type="submit" class="btn btn-primary p-2 m-2">Enregistrer</button>
-		<a href="<%=request.getContextPath()%>/AccountServlet " class="btn btn-primary btn-lg active m-2" role="button" aria-pressed="true">Retour</a>
-	</div>  
-	</form>
-</div>
+				<button type="submit" class="btn btn-primary p-2 m-2">Enregistrer</button>
+				<a href="<%=request.getContextPath()%>/AccountServlet " class="btn btn-primary btn-lg active m-2" role="button" aria-pressed="true">Retour</a>
+			</div>  
+		</form>
+	</div>
 </body>
+
 </html>

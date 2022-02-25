@@ -4,19 +4,19 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
-import javax.servlet.http.HttpServletRequest;
-
 import fr.eni.enchere.bo.Article;
-import fr.eni.enchere.bo.Utilisateur;
 
 public class FonctionsMétiers {
 
 	
-	public boolean verifVendeur(HttpServletRequest request,Article article, int id) {
+public static boolean VerifyIsVendeur(Article article, int idUtilisateur) {
 		
-		int idUtilisateur= (int) request.getSession().getAttribute("idUtilisateur");
+		int vendeur = article.getUtilisateur().getNoUtilisateur();
 		
-		return false;
+		//Je compare les informations du vendeur et de l'article pour envoyer une valeur boolean pour afficher ou non certaines infos dans la JSP.
+	
+		
+		return ( vendeur == idUtilisateur) ;//
 	
 	}
 	

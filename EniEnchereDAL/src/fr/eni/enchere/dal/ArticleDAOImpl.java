@@ -288,41 +288,31 @@ public class ArticleDAOImpl implements ArticleDAO{
 	}
 
 	@Override
-	public Article updateArticleById(int idUtilisateur) throws DALException, SQLException {
+	public Article updateArticleById(int idArticle, Article article) throws DALException, SQLException {
 		Connection cnx = null;
-		Article article = new Article();
+		Categorie categorie = new Categorie();
 		
 		try {
 			cnx = JdbcTools.getConnection();
 			PreparedStatement pstmt = cnx.prepareStatement(UPDATE_ARTICLE_BY_ID);
-			pstmt.setInt(1,idUtilisateur);
-			ResultSet rs = pstmt.executeQuery();
+			
 		
-			
-			while(rs.next())
-			{
-				
-				
-				Categorie categorie = new Categorie();
-				Utilisateur utilisateur=new Utilisateur();
-				
-				
-				article.setUtilisateur(utilisateur);
-				article.setCategorie(categorie);
-				article.setNomArticle(rs.getString("nom_article"));
-				article.setNoArticle(rs.getInt("no_article"));
-				article.setDescription(rs.getString("description"));
-				article.setDatedebutEncheres(rs.getString("date_debut_encheres"));
-				article.setDateFinEncheres(rs.getString("date_fin_encheres"));
-				article.setPrixVente(rs.getString("prix_initial"));	
-				
-					
-			}
-			
+			pstmt.setString(1, article.getNomArticle());
+			pstmt.setString(2, article.getDescription());
+			pstmt.setString(3, article.getDatedebutEncheres());
+			pstmt.setString(4, article.getDateFinEncheres());
+			pstmt.setString(6, article.getPrixVente());
+			pstmt.setInt(5, categorie.getNoCategorie());
+			pstmt.setInt(7, article.getNoArticle());
+
+			pstmt.executeUpdate();	
+	
+			cnx.commit();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
 		cnx.close();
 		
 		return article;
