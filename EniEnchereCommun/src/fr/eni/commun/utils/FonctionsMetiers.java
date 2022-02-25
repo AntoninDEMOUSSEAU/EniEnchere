@@ -1,4 +1,4 @@
-package fr.eni.enchere.bll.utils;
+package fr.eni.commun.utils;
 
 import fr.eni.enchere.bo.Article;
 import fr.eni.enchere.bo.Utilisateur;

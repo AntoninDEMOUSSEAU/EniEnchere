@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import fr.eni.commun.utils.FonctionsMetiers;
 import fr.eni.enchere.bll.ArticleManager;
 import fr.eni.enchere.bll.EncherirManager;
 import fr.eni.enchere.bo.Article;
