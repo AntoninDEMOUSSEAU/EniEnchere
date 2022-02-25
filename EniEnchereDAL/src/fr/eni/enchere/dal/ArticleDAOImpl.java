@@ -21,7 +21,9 @@ public class ArticleDAOImpl implements ArticleDAO{
 	private static final String SELECT_BY_NAME= "select * from ARTICLES_VENDUS a LEFT OUTER JOIN RETRAITS ON (a.no_article = RETRAITS.no_article), UTILISATEURS u where a.no_utilisateur = u.no_utilisateur AND a.nom_article LIKE ?";
 	private static final String SELECT_ARTICLE_BY_ID = "SELECT * FROM ARTICLES_VENDUS a LEFT OUTER JOIN RETRAITS r ON a.no_article=r.no_article LEFT OUTER JOIN UTILISATEURS u ON a.no_utilisateur=u.no_utilisateur LEFT OUTER JOIN ENCHERES e ON a.no_article=e.no_article LEFT OUTER JOIN CATEGORIES c ON a.no_categorie=c.no_categorie WHERE a.no_article=?";
 	private static final String SELECT_ARTICLE_BY_USER = "SELECT * FROM ARTICLES_VENDUS a LEFT OUTER JOIN RETRAITS r ON a.no_article=r.no_article LEFT OUTER JOIN UTILISATEURS u ON a.no_utilisateur=u.no_utilisateur LEFT OUTER JOIN ENCHERES e ON a.no_article=e.no_article LEFT OUTER JOIN CATEGORIES c ON a.no_categorie=c.no_categorie WHERE u.no_utilisateur=?";
+	private static final String UPDATE_ARTICLE_BY_ID ="UPDATE ARTICLES_VENDUS SET nom_article=?, description=?, date_debut_encheres=?, date_fin_encheres=?, prix_initial=?, no_categorie=? WHERE no_article=?";
 
+	
 	@Override
 	public void insertArticle(Article article, int idUtilisateur, int idCategorie) throws DALException, SQLException {
 		
@@ -261,6 +263,7 @@ public class ArticleDAOImpl implements ArticleDAO{
 				article.setNomArticle(rs.getString("nom_article"));
 				article.setNoArticle(rs.getInt("no_article"));
 				article.setDescription(rs.getString("description"));
+				article.setDatedebutEncheres(rs.getString("date_debut_encheres"));
 				article.setDateFinEncheres(rs.getString("date_fin_encheres"));
 				article.setPrixVente(rs.getString("prix_initial"));	
 				article.getRetrait().setCodePostal(rs.getInt("code_postal"));
@@ -282,7 +285,50 @@ public class ArticleDAOImpl implements ArticleDAO{
 		cnx.close();
 		
 		return listeArticleByUser;
-	}		
+	}
+
+	@Override
+	public Article updateArticleById(int idUtilisateur) throws DALException, SQLException {
+		Connection cnx = null;
+		Article article = new Article();
+		
+		try {
+			cnx = JdbcTools.getConnection();
+			PreparedStatement pstmt = cnx.prepareStatement(UPDATE_ARTICLE_BY_ID);
+			pstmt.setInt(1,idUtilisateur);
+			ResultSet rs = pstmt.executeQuery();
+		
+			
+			while(rs.next())
+			{
+				
+				
+				Categorie categorie = new Categorie();
+				Utilisateur utilisateur=new Utilisateur();
+				
+				
+				article.setUtilisateur(utilisateur);
+				article.setCategorie(categorie);
+				article.setNomArticle(rs.getString("nom_article"));
+				article.setNoArticle(rs.getInt("no_article"));
+				article.setDescription(rs.getString("description"));
+				article.setDatedebutEncheres(rs.getString("date_debut_encheres"));
+				article.setDateFinEncheres(rs.getString("date_fin_encheres"));
+				article.setPrixVente(rs.getString("prix_initial"));	
+				
+					
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		cnx.close();
+		
+		return article;
+	}
+		
+		
 }
 	
 			
